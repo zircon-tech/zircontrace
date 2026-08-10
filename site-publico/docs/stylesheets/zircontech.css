@@ -1,0 +1,115 @@
+/* Identidad visual ZirconTech, alineada al deck template de assessments-decks-offering
+   (presentation/decks/_template.html): navy oscuro, teal/cyan, Space Grotesk + Inter. */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --zt-navy: #061326;
+  --zt-navy-2: #082247;
+  --zt-panel: #102D56;
+  --zt-panel-2: #0C2444;
+  --zt-teal: #2583E7;
+  --zt-teal-dim: #1767BF;
+  --zt-cyan: #75B9FF;
+  --zt-ink: #E8EEF5;
+  --zt-ink-2: #94A3B8;
+  --zt-ink-3: #5B6E88;
+  --zt-line: rgba(37, 131, 231, .24);
+}
+
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: var(--zt-navy);
+  --md-default-fg-color: var(--zt-ink);
+  --md-default-fg-color--light: var(--zt-ink-2);
+  --md-default-fg-color--lighter: var(--zt-ink-3);
+
+  --md-primary-fg-color: var(--zt-navy-2);
+  --md-primary-bg-color: var(--zt-ink);
+
+  --md-accent-fg-color: var(--zt-cyan);
+  --md-accent-fg-color--transparent: rgba(117, 185, 255, .12);
+
+  --md-typeset-color: var(--zt-ink);
+  --md-typeset-a-color: var(--zt-cyan);
+
+  --md-code-bg-color: var(--zt-panel-2);
+  --md-code-fg-color: var(--zt-ink);
+
+  --md-footer-bg-color: var(--zt-navy-2);
+  --md-footer-bg-color--dark: var(--zt-navy);
+  --md-footer-fg-color: var(--zt-ink);
+  --md-footer-fg-color--light: var(--zt-ink-2);
+}
+
+body, .md-typeset {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4,
+.md-header__title,
+.md-nav__title {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  letter-spacing: -.01em;
+  font-weight: 600;
+}
+
+.md-typeset h1 {
+  font-weight: 700;
+  color: var(--zt-ink);
+}
+
+.md-typeset h2 {
+  border-bottom: 1px solid var(--zt-line);
+  padding-bottom: .4rem;
+}
+
+/* Header y tabs con look de panel oscuro, no el teal plano por defecto de Material */
+.md-header,
+.md-tabs {
+  background-color: var(--zt-navy-2);
+  border-bottom: 1px solid var(--zt-line);
+}
+
+.md-nav__link--active,
+.md-nav__link:focus,
+.md-nav__link:hover {
+  color: var(--zt-cyan);
+}
+
+.md-typeset a {
+  color: var(--zt-cyan);
+}
+
+.md-typeset a:hover {
+  color: var(--zt-teal);
+}
+
+/* Botones estilo deck: fondo cyan translúcido, borde teal */
+.md-typeset .md-button {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  border-radius: 8px;
+  border: 1px solid var(--zt-teal);
+  color: var(--zt-cyan);
+  background: rgba(37, 131, 231, .10);
+}
+
+.md-typeset .md-button:hover {
+  background: rgba(37, 131, 231, .22);
+  border-color: var(--zt-cyan);
+  color: var(--zt-cyan);
+}
+
+.md-typeset .md-button--primary {
+  background: linear-gradient(90deg, var(--zt-teal), var(--zt-teal-dim));
+  border-color: var(--zt-teal);
+  color: var(--zt-ink);
+}
+
+.md-typeset .md-button--primary:hover {
+  background: linear-gradient(90deg, var(--zt-cyan), var(--zt-teal));
+  color: var(--zt-navy);
+}

@@ -1,0 +1,28 @@
+site_name: ZirconTrace™ — ZirconTech
+site_description: Cómo trabajamos — el arco TRACE de ZirconTech
+site_url: https://zircon-tech.github.io/claude-skills/zircontrace/
+theme:
+  name: material
+  palette:
+    scheme: slate
+    primary: custom
+    accent: custom
+  font:
+    text: Inter
+  features:
+    - navigation.tabs
+    - navigation.top
+    - content.code.copy
+extra_css:
+  - stylesheets/zircontech.css
+nav:
+  - Inicio: index.md
+  - El arco TRACE: arco-trace.md
+  - Cómo trabajamos: como-trabajamos.md
+  - Contacto: contacto.md
+markdown_extensions:
+  - attr_list
+  - tables
+  - admonition
+  - toc:
+      permalink: true
