@@ -1,6 +1,6 @@
 site_name: ZirconTrace™ — ZirconTech
 site_description: Cómo trabajamos — el arco TRACE de ZirconTech
-site_url: https://zircon-tech.github.io/claude-skills/zircontrace/
+site_url: https://zircon-tech.github.io/zircontrace/
 theme:
   name: material
   palette:

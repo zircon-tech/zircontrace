@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'zircontrace/site-publico/**'
+      - 'site-publico/**'
       - '.github/workflows/deploy-docs.yml'
   workflow_dispatch: {}
 
@@ -25,9 +25,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-      - run: pip install -r zircontrace/site-publico/requirements.txt
-      - run: mkdocs build --config-file zircontrace/site-publico/mkdocs.yml --site-dir ../../_site
-        working-directory: zircontrace/site-publico
+      - run: pip install -r site-publico/requirements.txt
+      - run: mkdocs build --config-file site-publico/mkdocs.yml --site-dir ../_site
+        working-directory: site-publico
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
