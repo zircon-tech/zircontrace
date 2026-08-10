@@ -21,4 +21,4 @@ Trabajamos con equipo dedicado, precio fijo o time & materials, según lo que me
 5. Testing y aseguramiento de calidad
 6. Despliegue y lanzamiento
 
-Este proceso es el "cómo" detrás de las etapas Craft y Evolve del arco TRACE.
+Este proceso es el "cómo" detrás de las etapas Craft y Evolve del ciclo TRACE.

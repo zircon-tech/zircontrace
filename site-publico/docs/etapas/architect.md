@@ -21,4 +21,4 @@
 
 ---
 
-[← Read](read.md) · [Volver al arco TRACE](../arco-trace.md) · [Siguiente: Craft →](craft.md)
+[← Read](read.md) · [Volver al ciclo TRACE](../ciclo-trace.md) · [Siguiente: Craft →](craft.md)

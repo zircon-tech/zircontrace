@@ -21,4 +21,4 @@
 
 ---
 
-[← Architect](architect.md) · [Volver al arco TRACE](../arco-trace.md) · [Siguiente: Evolve →](evolve.md)
+[← Architect](architect.md) · [Volver al ciclo TRACE](../ciclo-trace.md) · [Siguiente: Evolve →](evolve.md)

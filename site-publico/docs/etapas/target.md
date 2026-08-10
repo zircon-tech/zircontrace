@@ -23,4 +23,4 @@ Sin esto no arrancamos Read: no tiene sentido radiografiar sin saber qué estamo
 
 ---
 
-[← Volver al arco TRACE](../arco-trace.md) · [Siguiente: Read →](read.md)
+[← Volver al ciclo TRACE](../ciclo-trace.md) · [Siguiente: Read →](read.md)

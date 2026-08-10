@@ -31,4 +31,4 @@ Si el delta no es positivo, lo explicamos y armamos un plan de acción, no lo es
 
 ---
 
-[← Craft](craft.md) · [Volver al arco TRACE](../arco-trace.md)
+[← Craft](craft.md) · [Volver al ciclo TRACE](../ciclo-trace.md)

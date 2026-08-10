@@ -4,7 +4,8 @@ Términos que vas a encontrar en este sitio, explicados en una línea.
 
 | Término | Qué significa |
 |---|---|
-| **TRACE** | El arco de 5 etapas de ZirconTech: Target, Read, Architect, Craft, Evolve. |
+| **TRACE** | El ciclo de 5 etapas de ZirconTech: Target, Read, Architect, Craft, Evolve. |
+| **Double Diamond** | Modelo de Design Thinking: primero divergemos para explorar el problema a fondo, después convergemos en los casos de uso priorizados. Es la narrativa de discovery de Target. |
 | **KPI** | Indicador clave de desempeño: la métrica concreta que un caso de uso tiene que mover. |
 | **Línea base** | El valor del KPI antes de arrancar, contra el que después se mide el resultado. |
 | **Gate** | El criterio de salida de cada etapa: la condición que tiene que cumplirse antes de pasar a la siguiente. |

@@ -26,6 +26,15 @@ nav:
   - Evolve: 05-evolve.md
   - Glosario: 06-glosario.md
   - Referencias: 07-referencias.md
+  - Toolkit de plantillas:
+      - Cómo usar: plantillas/00-como-usar.md
+      - "Target: 1-pager": plantillas/target-1pager.md
+      - "Read: assessment report": plantillas/read-assessment-report.md
+      - "Architect: documento de arquitectura": plantillas/architect-documento-arquitectura.md
+      - ADR: plantillas/adr.md
+      - "Craft: evidencia vs. PoC": plantillas/craft-evidencia-poc.md
+      - "Evolve: informe de trazabilidad": plantillas/evolve-informe-trazabilidad.md
+      - "Evolve: resumen mensual": plantillas/evolve-resumen-mensual.md
 markdown_extensions:
   - attr_list
   - tables

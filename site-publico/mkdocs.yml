@@ -1,5 +1,5 @@
 site_name: ZirconTrace™ · ZirconTech
-site_description: "Cómo trabajamos: el arco TRACE de ZirconTech"
+site_description: "Cómo trabajamos: el ciclo TRACE de ZirconTech"
 site_url: https://zircon-tech.github.io/zircontrace/
 theme:
   name: material
@@ -22,8 +22,8 @@ extra_javascript:
   - javascripts/mermaid-init.js
 nav:
   - Inicio: index.md
-  - El arco TRACE:
-      - Resumen: arco-trace.md
+  - El ciclo TRACE:
+      - Resumen: ciclo-trace.md
       - Target: etapas/target.md
       - Read: etapas/read.md
       - Architect: etapas/architect.md

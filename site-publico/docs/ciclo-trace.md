@@ -1,4 +1,4 @@
-# El arco TRACE
+# El ciclo TRACE
 
 Cinco etapas, cada una con un entregable concreto y un criterio de salida: no seguimos a la próxima etapa sin cumplirlo.
 

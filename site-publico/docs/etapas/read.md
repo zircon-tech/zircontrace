@@ -24,4 +24,4 @@
 
 ---
 
-[← Target](target.md) · [Volver al arco TRACE](../arco-trace.md) · [Siguiente: Architect →](architect.md)
+[← Target](target.md) · [Volver al ciclo TRACE](../ciclo-trace.md) · [Siguiente: Architect →](architect.md)

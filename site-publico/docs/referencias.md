@@ -8,6 +8,7 @@ ZirconTrace no inventa etapas nuevas: ancla cada una en un estándar de la indus
 | **AWS Cloud Adoption Framework (CAF)** | Read, para evaluar gaps por perspectiva: Negocio, Personas, Gobernanza, Plataforma, Seguridad, Operaciones. | [aws.amazon.com/cloud-adoption-framework](https://aws.amazon.com/cloud-adoption-framework/) |
 | **FinOps Framework** | Transversal a las 5 etapas, mapeado a sus 3 fases reales: Inform (Architect), Optimize (Craft), Operate (Evolve). | [finops.org/framework](https://www.finops.org/framework/) |
 | **Working Backwards (PR/FAQ)** | Target, para partir del resultado de negocio antes que de la solución técnica. | Metodología de Amazon, documentada en el libro *Working Backwards* (Bryar & Carr, 2021). |
+| **Double Diamond (Design Thinking)** | Target, como narrativa de discovery: primero divergemos para explorar el problema a fondo, después convergemos en los casos de uso priorizados. | [designcouncil.org.uk/resources/the-double-diamond](https://www.designcouncil.org.uk/resources/the-double-diamond/) |
 | **CRISP-DM** | Read, como referencia de proceso para proyectos de datos y machine learning. | [datascience-pm.com/crisp-dm-2](https://www.datascience-pm.com/crisp-dm-2/) |
 
 [Ver el glosario de términos →](glosario.md)

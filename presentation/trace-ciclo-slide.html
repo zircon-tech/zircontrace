@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El ciclo TRACE · ZirconTech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#061326;
+    --navy-2:#082247;
+    --panel-2:#0C2444;
+    --teal:#2583E7;
+    --teal-dim:#1767BF;
+    --cyan:#75B9FF;
+    --aws:#FF9900;
+    --ink:#E8EEF5;
+    --ink-2:#94A3B8;
+    --ink-3:#5B6E88;
+    --line:rgba(37,131,231,.24);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:
+      radial-gradient(1200px 700px at 78% -10%, rgba(37,131,231,.10), transparent 60%),
+      radial-gradient(900px 600px at -10% 110%, rgba(255,153,0,.05), transparent 55%),
+      linear-gradient(180deg,var(--navy) 0%, var(--navy-2) 100%);
+    color:var(--ink);font-family:'Inter',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    display:flex;align-items:center;justify-content:center;
+  }
+  h1,h2,h3,.display{font-family:'Space Grotesk','Inter',sans-serif;letter-spacing:-.01em;}
+
+  .slide{
+    position:relative;width:1280px;height:720px;flex-shrink:0;
+    padding:37px 77px 62px;display:flex;flex-direction:column;
+  }
+  .nodes{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;}
+  .slide>*{position:relative;z-index:1;}
+
+  .eyebrow{
+    font-family:'Space Grotesk';font-weight:600;font-size:.82rem;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--teal);
+    display:flex;align-items:center;gap:.7rem;margin-bottom:1rem;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--teal);display:inline-block;border-radius:2px;}
+  .headline{font-weight:600;line-height:1.06;font-size:2.5rem;max-width:26ch;}
+  .subhead{color:var(--ink-2);font-size:1.05rem;line-height:1.45;margin-top:.7rem;max-width:60ch;font-weight:400;}
+
+  /* ---------- Ciclo TRACE (5 nodos + flechas) ---------- */
+  .trace-row{display:flex;align-items:stretch;gap:.6rem;margin-top:1.3rem;flex:1;}
+  .trace-node{
+    flex:1;background:var(--panel-2);border:1px solid rgba(255,255,255,.06);border-radius:14px;
+    border-top:3px solid var(--teal);padding:.8rem .8rem;display:flex;flex-direction:column;gap:.4rem;min-width:0;
+  }
+  .trace-node .letter{
+    width:34px;height:34px;border-radius:9px;background:rgba(37,131,231,.12);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-weight:700;color:var(--teal);font-size:1.05rem;
+  }
+  .trace-node h3{font-size:1.06rem;font-weight:600;margin-top:.15rem;}
+  .trace-node .foco{color:var(--ink-2);font-size:.82rem;line-height:1.35;}
+  .trace-node .divider{height:1px;background:rgba(255,255,255,.07);margin:.15rem 0;}
+  .trace-node .lbl{font-family:'Space Grotesk';font-weight:600;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);}
+  .trace-node .val{color:var(--ink);font-size:.8rem;line-height:1.35;margin-top:.15rem;}
+  .trace-node .gate{color:var(--cyan);font-size:.78rem;line-height:1.35;margin-top:auto;padding-top:.5rem;font-weight:500;}
+  .trace-arrow{display:flex;align-items:center;justify-content:center;color:var(--teal);flex-shrink:0;width:20px;}
+  .trace-arrow svg{width:20px;height:20px;}
+
+  /* ---------- Loop de trazabilidad ---------- */
+  .trace-loop{
+    margin-top:.65rem;display:flex;align-items:center;gap:.8rem;
+    background:linear-gradient(90deg, rgba(37,131,231,.16), rgba(37,131,231,.04));
+    border:1px solid var(--line);border-radius:12px;padding:.6rem 1.1rem;
+  }
+  .trace-loop svg{width:22px;height:22px;stroke:var(--cyan);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+  .trace-loop p{color:var(--ink);font-size:.95rem;line-height:1.4;}
+  .trace-loop b{color:var(--cyan);font-weight:600;}
+
+  .footer{position:absolute;left:77px;right:77px;bottom:19px;z-index:3;display:flex;align-items:center;justify-content:space-between;font-size:.8rem;color:var(--ink-3);}
+  .footer-logo{height:18px;width:auto;display:block;opacity:.72;}
+  .aws-partner-mark{height:30px;width:auto;display:block;opacity:.85;}
+
+  @media print{
+    @page{size:1280px 720px;margin:0;}
+    html,body{overflow:visible;height:auto;display:block;}
+    .slide{width:1280px;height:720px;}
+  }
+</style>
+</head>
+<body>
+<section class="slide">
+  <svg class="nodes" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice">
+    <g stroke="rgba(37,131,231,.5)" stroke-width="1" fill="none">
+      <line x1="980" y1="90" x2="1120" y2="190"/><line x1="1120" y1="190" x2="1040" y2="330"/>
+      <line x1="120" y1="600" x2="260" y2="660"/>
+    </g>
+    <g fill="var(--teal)">
+      <circle cx="980" cy="90" r="4"/><circle cx="1120" cy="190" r="5"/><circle cx="1040" cy="330" r="4"/>
+      <circle cx="120" cy="600" r="4"/><circle cx="260" cy="660" r="5"/>
+    </g>
+  </svg>
+
+  <div class="eyebrow">Cómo trabajamos</div>
+  <h1 class="headline">El ciclo TRACE</h1>
+  <p class="subhead">Cinco etapas, cada una con un entregable concreto y un criterio de salida. No inventamos el marco: anclamos en AWS Well-Architected, AWS CAF, FinOps y Working Backwards.</p>
+
+  <div class="trace-row">
+    <div class="trace-node">
+      <div class="letter">T</div>
+      <h3>Target</h3>
+      <p class="foco">Traducir el problema de negocio en un resultado medible.</p>
+      <div class="divider"></div>
+      <div class="lbl">Entregable</div>
+      <div class="val">Casos de uso priorizados + KPI + línea base</div>
+      <div class="gate">Gate: caso de uso con dueño, KPI y valor estimado</div>
+    </div>
+    <div class="trace-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    <div class="trace-node">
+      <div class="letter">R</div>
+      <h3>Read</h3>
+      <p class="foco">Radiografiar datos, arquitectura, riesgos y factibilidad.</p>
+      <div class="divider"></div>
+      <div class="lbl">Entregable</div>
+      <div class="val">Informe de assessment con gaps por perspectiva</div>
+      <div class="gate">Gate: factibilidad confirmada (datos + arquitectura + compliance)</div>
+    </div>
+    <div class="trace-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    <div class="trace-node">
+      <div class="letter">A</div>
+      <h3>Architect</h3>
+      <p class="foco">Diseñar la solución objetivo, el roadmap y el costo.</p>
+      <div class="divider"></div>
+      <div class="lbl">Entregable</div>
+      <div class="val">Arquitectura + roadmap + estimación de costos + plan de PoC</div>
+      <div class="gate">Gate: costo aprobado, alcance de PoC acordado</div>
+    </div>
+    <div class="trace-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    <div class="trace-node">
+      <div class="letter">C</div>
+      <h3>Craft</h3>
+      <p class="foco">Construir iterativo y probar la hipótesis del PoC.</p>
+      <div class="divider"></div>
+      <div class="lbl">Entregable</div>
+      <div class="val">PoC funcionando + evidencia vs. criterios de éxito</div>
+      <div class="gate">Gate: decisión go/no-go documentada</div>
+    </div>
+    <div class="trace-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    <div class="trace-node">
+      <div class="letter">E</div>
+      <h3>Evolve</h3>
+      <p class="foco">Producción, medición de resultados y mejora continua.</p>
+      <div class="divider"></div>
+      <div class="lbl">Entregable</div>
+      <div class="val">Artefacto de trazabilidad: objetivo vs. resultado medido</div>
+      <div class="gate">Gate: delta positivo o plan de acción documentado</div>
+    </div>
+  </div>
+
+  <div class="trace-loop">
+    <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
+    <p><b>Evolve cierra el círculo</b> contra el objetivo definido en Target: el resultado medido se compara siempre contra la línea base original. Esa trazabilidad es la firma de ZirconTrace.</p>
+  </div>
+
+  <div class="footer">
+    <img class="footer-logo" src="zircon-logo.png" alt="ZirconTech">
+    <img class="aws-partner-mark" src="aws-partner-logo-white.webp" alt="AWS Advanced Tier Services Partner">
+  </div>
+</section>
+</body>
+</html>
