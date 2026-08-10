@@ -1,0 +1,34 @@
+site_name: ZirconTrace™ · Interno
+site_description: "Plantillas y checklists internos de la metodología TRACE (sin curar, uso interno)"
+docs_dir: ../methodology
+theme:
+  name: material
+  logo: assets/logo.svg
+  favicon: assets/favicon.jpg
+  palette:
+    scheme: slate
+    primary: custom
+    accent: custom
+  font:
+    text: Inter
+  features:
+    - navigation.tabs
+    - navigation.top
+    - content.code.copy
+extra_css:
+  - stylesheets/zircontech.css
+nav:
+  - Tabla maestra: 00-tabla-maestra.md
+  - Target: 01-target.md
+  - Read: 02-read.md
+  - Architect: 03-architect.md
+  - Craft: 04-craft.md
+  - Evolve: 05-evolve.md
+  - Glosario: 06-glosario.md
+  - Referencias: 07-referencias.md
+markdown_extensions:
+  - attr_list
+  - tables
+  - admonition
+  - toc:
+      permalink: true

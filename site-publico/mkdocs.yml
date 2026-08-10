@@ -1,8 +1,10 @@
-site_name: ZirconTrace™ — ZirconTech
-site_description: Cómo trabajamos — el arco TRACE de ZirconTech
+site_name: ZirconTrace™ · ZirconTech
+site_description: "Cómo trabajamos: el arco TRACE de ZirconTech"
 site_url: https://zircon-tech.github.io/zircontrace/
 theme:
   name: material
+  logo: assets/logo.svg
+  favicon: assets/favicon.jpg
   palette:
     scheme: slate
     primary: custom
@@ -15,14 +17,31 @@ theme:
     - content.code.copy
 extra_css:
   - stylesheets/zircontech.css
+extra_javascript:
+  - javascripts/mermaid.min.js
+  - javascripts/mermaid-init.js
 nav:
   - Inicio: index.md
-  - El arco TRACE: arco-trace.md
+  - El arco TRACE:
+      - Resumen: arco-trace.md
+      - Target: etapas/target.md
+      - Read: etapas/read.md
+      - Architect: etapas/architect.md
+      - Craft: etapas/craft.md
+      - Evolve: etapas/evolve.md
   - Cómo trabajamos: como-trabajamos.md
+  - Recursos:
+      - Glosario: glosario.md
+      - Referencias: referencias.md
   - Contacto: contacto.md
 markdown_extensions:
   - attr_list
   - tables
   - admonition
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid-diagram
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - toc:
       permalink: true
