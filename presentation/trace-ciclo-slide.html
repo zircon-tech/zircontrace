@@ -68,6 +68,38 @@
   .cover h1{font-size:4.2rem;font-weight:700;line-height:1.02;}
   .cover .sub{color:var(--ink-2);font-size:1.3rem;margin-top:1.3rem;max-width:40ch;font-weight:400;}
 
+  .cover-anchors{display:flex;gap:.6rem;margin-top:1.1rem;flex-wrap:wrap;}
+  .cover-anchors span{
+    font-family:'Space Grotesk';font-size:.76rem;font-weight:500;color:var(--ink-3);
+    border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:.35rem .85rem;
+  }
+
+  .cover-cycle{position:absolute;right:77px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:.9rem;}
+  .cover-cycle .ring{position:relative;width:280px;height:280px;}
+  .cover-cycle .node{
+    position:absolute;width:56px;height:56px;border-radius:50%;
+    background:var(--panel-2);border:1.5px solid var(--teal);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Space Grotesk';font-weight:700;font-size:1.15rem;color:var(--cyan);
+    box-shadow:0 0 0 8px rgba(6,19,38,.6);
+  }
+  .cover-cycle .hub{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    font-family:'Space Grotesk';font-weight:700;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-3);text-align:center;line-height:1.4;
+  }
+  .cover-cycle .caption{font-family:'Space Grotesk';font-size:.78rem;color:var(--ink-3);letter-spacing:.04em;}
+
+  /* ---------- Mini stepper "you are here" used on stage detail slides ---------- */
+  .stage-mini{margin-top:auto;padding-top:.9rem;display:flex;align-items:center;gap:.45rem;}
+  .stage-mini .dot{
+    width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:'Space Grotesk';font-weight:700;font-size:.68rem;
+    background:var(--panel-2);border:1px solid rgba(255,255,255,.08);color:var(--ink-3);
+  }
+  .stage-mini .dot.on{background:var(--teal);border-color:var(--cyan);color:var(--ink);}
+  .stage-mini .bar{flex:1;height:1px;background:rgba(255,255,255,.08);}
+
   /* ---------- Ciclo TRACE overview (5 nodos + flechas) ---------- */
   .trace-row{display:flex;align-items:stretch;gap:.6rem;margin-top:1.3rem;flex:1;}
   .trace-node{
@@ -109,25 +141,43 @@
   .stage-block{border-radius:14px;padding:1rem 1.2rem;background:var(--panel-2);border:1px solid rgba(255,255,255,.06);border-left:3px solid var(--ink-3);}
   .stage-block .label{font-family:'Space Grotesk';font-weight:600;letter-spacing:.04em;font-size:.8rem;margin-bottom:.4rem;text-transform:uppercase;color:var(--ink-2);}
   .stage-block p{font-size:.92rem;line-height:1.45;color:var(--ink);}
-  .stage-block.gate{border-left-color:var(--teal);background:linear-gradient(160deg,rgba(37,131,231,.14),rgba(37,131,231,.03));border-color:var(--line);flex:1;}
+  .stage-block.gate{border-left-color:var(--teal);background:linear-gradient(160deg,rgba(37,131,231,.14),rgba(37,131,231,.03));border-color:var(--line);}
   .stage-block.gate .label{color:var(--teal);}
   .stage-block.gate p{color:var(--cyan);font-weight:500;}
 
   .example-card{
     background:linear-gradient(160deg,rgba(255,153,0,.10),rgba(255,153,0,.02));
-    border:1px solid rgba(255,153,0,.28);border-radius:16px;padding:1.3rem 1.5rem;
+    border:1px solid rgba(255,153,0,.28);border-radius:16px;padding:1.5rem 1.7rem;
     display:flex;flex-direction:column;min-height:0;
   }
   .example-tag{
     display:inline-flex;align-items:center;gap:.5rem;width:fit-content;
     font-family:'Space Grotesk';font-weight:600;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--aws);margin-bottom:1rem;
+    color:var(--aws);margin-bottom:1.1rem;
   }
   .example-tag svg{width:15px;height:15px;stroke:var(--aws);stroke-width:2;fill:none;}
-  .example-rows{display:flex;flex-direction:column;gap:.75rem;overflow:auto;}
+
+  .example-big{
+    font-family:'Space Grotesk';font-weight:700;font-size:4.4rem;line-height:.9;
+    background:linear-gradient(180deg,#FFC670,var(--aws));-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .example-big small{
+    display:block;font-size:.92rem;color:var(--ink-2);font-weight:500;margin-top:.55rem;
+    -webkit-text-fill-color:var(--ink-2);max-width:34ch;line-height:1.35;
+  }
+  .example-flag{
+    display:inline-flex;align-items:center;gap:.5rem;width:fit-content;
+    background:rgba(255,153,0,.14);border:1px solid rgba(255,153,0,.4);border-radius:10px;
+    padding:.7rem 1rem;font-family:'Space Grotesk';font-weight:600;font-size:1.15rem;color:#FFC670;
+  }
+  .example-flag small{display:block;font-family:'Inter';font-weight:400;font-size:.76rem;color:var(--ink-2);margin-top:.2rem;}
+
+  .example-divider{height:1px;background:rgba(255,153,0,.18);margin:1.1rem 0;}
+
+  .example-rows{display:flex;flex-direction:column;gap:.65rem;overflow:auto;}
   .example-rows .row{display:flex;flex-direction:column;gap:.15rem;}
   .example-rows dt{font-family:'Space Grotesk';font-weight:600;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);}
-  .example-rows dd{font-size:.9rem;line-height:1.4;color:var(--ink);}
+  .example-rows dd{font-size:.88rem;line-height:1.4;color:var(--ink);}
   .example-rows dd b{color:var(--cyan);font-weight:600;}
 
   /* ---------- Closing ---------- */
@@ -137,9 +187,16 @@
   .step .n{font-family:'Space Grotesk';font-weight:700;color:var(--teal);font-size:1rem;}
   .step h4{font-family:'Space Grotesk';font-weight:600;font-size:1.14rem;}
   .step p{color:var(--ink-2);font-size:.9rem;line-height:1.4;}
-  .step .arr{position:absolute;right:-1.05rem;top:50%;transform:translateY(-50%);color:var(--teal);z-index:3;}
+  .step .arr{position:absolute;right:-1.05rem;top:50%;transform:translateY(-50%);color:var(--teal);z-index:3;width:20px;height:20px;}
+  .step .arr svg{display:block;width:20px;height:20px;}
   .step:last-child .arr{display:none;}
   .close-lockup{margin-top:2.4rem;display:flex;align-items:center;gap:1.3rem;}
+  .close-cta{
+    margin-top:1.6rem;display:flex;align-items:center;gap:.6rem;
+    font-family:'Space Grotesk';font-size:.95rem;color:var(--ink-2);
+  }
+  .close-cta b{color:var(--cyan);font-weight:600;}
+  .close-cta svg{width:16px;height:16px;stroke:var(--teal);stroke-width:2;fill:none;flex-shrink:0;}
 
   /* ---------- Nav chrome ---------- */
   .nav{position:fixed;bottom:2.4vh;right:6vw;z-index:50;display:flex;align-items:center;gap:.5rem;}
@@ -184,7 +241,29 @@
   </div>
   <h1 class="display">El ciclo TRACE</h1>
   <p class="sub">Cómo trabajamos: cada decisión técnica, trazable desde el objetivo de negocio hasta el resultado medido.</p>
-  <div class="badge">Metodología propia, anclada en AWS Well-Architected, CAF y FinOps</div>
+  <div class="badge">Metodología propia, anclada en estándares reconocidos de la industria</div>
+  <div class="cover-anchors">
+    <span>AWS Well-Architected</span><span>AWS CAF</span><span>FinOps Foundation</span><span>Working Backwards</span>
+  </div>
+  <div class="cover-cycle">
+    <svg width="280" height="280" viewBox="0 0 280 280">
+      <polyline points="140,35 240,108 202,225 78,225 40,108" fill="none" stroke="rgba(37,131,231,.4)" stroke-width="1.5"/>
+      <path d="M40,108 A128,128 0 0,1 140,35" fill="none" stroke="#75B9FF" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <g font-family="'Space Grotesk',sans-serif" font-weight="700" font-size="17" text-anchor="middle">
+        <circle cx="140" cy="35" r="25" fill="#0C2444" stroke="#2583E7" stroke-width="1.5"/>
+        <text x="140" y="41" fill="#75B9FF">T</text>
+        <circle cx="240" cy="108" r="25" fill="#0C2444" stroke="#2583E7" stroke-width="1.5"/>
+        <text x="240" y="114" fill="#75B9FF">R</text>
+        <circle cx="202" cy="225" r="25" fill="#0C2444" stroke="#2583E7" stroke-width="1.5"/>
+        <text x="202" y="231" fill="#75B9FF">A</text>
+        <circle cx="78" cy="225" r="25" fill="#0C2444" stroke="#2583E7" stroke-width="1.5"/>
+        <text x="78" y="231" fill="#75B9FF">C</text>
+        <circle cx="40" cy="108" r="25" fill="#0C2444" stroke="#2583E7" stroke-width="1.5"/>
+        <text x="40" y="114" fill="#75B9FF">E</text>
+      </g>
+    </svg>
+    <div class="caption">Target → Read → Architect → Craft → Evolve</div>
+  </div>
   <div class="footer"><img class="footer-logo" src="zircon-logo.png" alt="ZirconTech"></div>
 </section>
 
@@ -266,14 +345,21 @@
         <div class="label">Gate</div>
         <p>Hay al menos un caso de uso con dueño, KPI y valor estimado — confirmado por escrito antes de arrancar Read.</p>
       </div>
+      <div class="stage-mini">
+        <div class="dot on">T</div><div class="bar"></div>
+        <div class="dot">R</div><div class="bar"></div>
+        <div class="dot">A</div><div class="bar"></div>
+        <div class="dot">C</div><div class="bar"></div>
+        <div class="dot">E</div>
+      </div>
     </div>
     <div class="example-card">
       <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Ejemplo ilustrativo (ficticio) · Andina Retail</div>
+      <div class="example-big">0%<small>de consultas resueltas sin un humano — hoy es 100% manual</small></div>
+      <div class="example-divider"></div>
       <div class="example-rows">
         <div class="row"><dt>Problema</dt><dd>El equipo de atención al cliente recibe <b>40% más consultas</b> por WhatsApp que el año pasado; tiempo de respuesta promedio de 6 horas.</dd></div>
-        <div class="row"><dt>Caso de uso</dt><dd>Agente de atención por WhatsApp para consultas de estado de pedido y devoluciones.</dd></div>
-        <div class="row"><dt>Dueño</dt><dd>Gerente de Experiencia de Cliente.</dd></div>
-        <div class="row"><dt>KPI / línea base</dt><dd>% de consultas resueltas sin intervención humana — línea base <b>0%</b> (hoy 100% humano).</dd></div>
+        <div class="row"><dt>Caso de uso</dt><dd>Agente de atención por WhatsApp para consultas de estado de pedido y devoluciones. Dueño: Gerente de Experiencia de Cliente.</dd></div>
         <div class="row"><dt>Valor estimado</dt><dd>Reducir 25% la carga del equipo de CX.</dd></div>
       </div>
     </div>
@@ -296,11 +382,20 @@
         <div class="label">Gate</div>
         <p>Factibilidad confirmada — datos, arquitectura y compliance — antes de pasar a Architect.</p>
       </div>
+      <div class="stage-mini">
+        <div class="dot">T</div><div class="bar"></div>
+        <div class="dot on">R</div><div class="bar"></div>
+        <div class="dot">A</div><div class="bar"></div>
+        <div class="dot">C</div><div class="bar"></div>
+        <div class="dot">E</div>
+      </div>
     </div>
     <div class="example-card">
       <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Ejemplo ilustrativo (ficticio) · Andina Retail</div>
+      <div class="example-flag">Gap Alto · Plataforma (CAF)<small>ERP legado sin API para exponer datos de pedidos</small></div>
+      <div class="example-divider"></div>
       <div class="example-rows">
-        <div class="row"><dt>Hallazgo técnico</dt><dd>Los datos de pedidos viven en un ERP legado sin API — gap <b>Alto</b> en la perspectiva Platform del CAF.</dd></div>
+        <div class="row"><dt>Alcance del assessment</dt><dd>Revisión de 3 sistemas core (ERP, e-commerce, CRM) y entrevistas con 4 stakeholders del negocio y de IT.</dd></div>
         <div class="row"><dt>Compliance (Ley 21.719)</dt><dd>Andina procesa datos de clientes en Chile: se identifica la necesidad de anonimizar el historial de compras antes de usarlo para entrenar el agente.</dd></div>
         <div class="row"><dt>Conclusión</dt><dd>Factibilidad confirmada, <b>con condición</b>: resolver el acceso a datos del ERP antes de Architect.</dd></div>
       </div>
@@ -324,12 +419,21 @@
         <div class="label">Gate</div>
         <p>Costo estimado aprobado y alcance del PoC acordado, con criterios de éxito medibles.</p>
       </div>
+      <div class="stage-mini">
+        <div class="dot">T</div><div class="bar"></div>
+        <div class="dot">R</div><div class="bar"></div>
+        <div class="dot on">A</div><div class="bar"></div>
+        <div class="dot">C</div><div class="bar"></div>
+        <div class="dot">E</div>
+      </div>
     </div>
     <div class="example-card">
       <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Ejemplo ilustrativo (ficticio) · Andina Retail</div>
+      <div class="example-big">$800<small>USD estimados de infraestructura por mes (región sa-east-1)</small></div>
+      <div class="example-divider"></div>
       <div class="example-rows">
         <div class="row"><dt>Arquitectura</dt><dd>Amazon Bedrock (Claude) + Lambda + DynamoDB, integrado con la WhatsApp Business API.</dd></div>
-        <div class="row"><dt>Costo estimado</dt><dd>~<b>USD 800/mes</b> de infraestructura (región sa-east-1).</dd></div>
+        <div class="row"><dt>Roadmap</dt><dd>Fase 1 (PoC): agente de WhatsApp. Fase 2 (futura, sin estimar aún): extender a devoluciones automatizadas.</dd></div>
         <div class="row"><dt>Criterio de éxito del PoC</dt><dd>≥70% de consultas resueltas sin escalar a un humano, medido sobre 200 conversaciones reales.</dd></div>
       </div>
     </div>
@@ -352,12 +456,21 @@
         <div class="label">Gate</div>
         <p>Todos los criterios de éxito tienen un resultado registrado y hay una decisión de continuidad documentada.</p>
       </div>
+      <div class="stage-mini">
+        <div class="dot">T</div><div class="bar"></div>
+        <div class="dot">R</div><div class="bar"></div>
+        <div class="dot">A</div><div class="bar"></div>
+        <div class="dot on">C</div><div class="bar"></div>
+        <div class="dot">E</div>
+      </div>
     </div>
     <div class="example-card">
       <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Ejemplo ilustrativo (ficticio) · Andina Retail</div>
+      <div class="example-big">74%<small>de consultas resueltas sin intervención humana — supera el criterio de éxito (70%)</small></div>
+      <div class="example-divider"></div>
       <div class="example-rows">
-        <div class="row"><dt>Construcción</dt><dd>3 sprints. PoC probado contra 200 conversaciones históricas y validado en vivo con 20 clientes reales.</dd></div>
-        <div class="row"><dt>Resultado</dt><dd><b>74%</b> de consultas resueltas sin intervención humana — supera el criterio de éxito (70%).</dd></div>
+        <div class="row"><dt>Construcción</dt><dd>3 sprints de 2 semanas. PoC probado contra 200 conversaciones históricas y validado en vivo con 20 clientes reales.</dd></div>
+        <div class="row"><dt>FinOps (Optimize)</dt><dd>Se ajustó el modelo a Claude para reducir el costo por conversación un 30% sin bajar la calidad de respuesta.</dd></div>
         <div class="row"><dt>Decisión</dt><dd><b>Go a producción</b>, aprobada por la Gerente de Experiencia de Cliente.</dd></div>
       </div>
     </div>
@@ -380,12 +493,21 @@
         <div class="label">Gate</div>
         <p>Delta positivo, o si no lo es, explicado con un plan de acción — y al menos un ítem de evolución para el próximo período.</p>
       </div>
+      <div class="stage-mini">
+        <div class="dot">T</div><div class="bar"></div>
+        <div class="dot">R</div><div class="bar"></div>
+        <div class="dot">A</div><div class="bar"></div>
+        <div class="dot">C</div><div class="bar"></div>
+        <div class="dot on">E</div>
+      </div>
     </div>
     <div class="example-card">
       <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Ejemplo ilustrativo (ficticio) · Andina Retail</div>
+      <div class="example-big">+71pts<small>vs. línea base, medido a los 2 meses en producción (71% vs. 0%)</small></div>
+      <div class="example-divider"></div>
       <div class="example-rows">
-        <div class="row"><dt>2 meses en producción</dt><dd>KPI medido: <b>71%</b> de consultas resueltas sin intervención (línea base 0%).</dd></div>
-        <div class="row"><dt>Delta</dt><dd><b>+71 puntos</b> vs. línea base — algo por debajo del pico del PoC (74%), explicado por la mayor variedad de consultas reales.</dd></div>
+        <div class="row"><dt>Lectura del delta</dt><dd>Algo por debajo del pico del PoC (74%), explicado por la mayor variedad de consultas reales en producción.</dd></div>
+        <div class="row"><dt>Costo real</dt><dd>USD 740/mes de infraestructura — 8% por debajo del estimado en Architect.</dd></div>
         <div class="row"><dt>Plan de evolución</dt><dd>Sumar canal de email y abrir un nuevo ciclo de Target para devoluciones automatizadas.</dd></div>
       </div>
     </div>
@@ -417,6 +539,10 @@
         <h4>Recorremos el ciclo</h4>
         <p>Read, Architect, Craft y Evolve — con un gate de calidad en cada etapa.</p>
       </div>
+    </div>
+    <div class="close-cta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><path d="M2 6h20v12H2z"/></svg>
+      Escribinos a <b>contact@zircon.tech</b> o entrá a <b>zircon.tech</b>
     </div>
     <div class="close-lockup">
       <img class="zircon-mark" src="zircon-logo.png" alt="ZirconTech">
