@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'site-publico/**'
+      - 'site-publico-en/**'
       - 'site-interno/**'
       - 'methodology/**'
       - 'presentation/**'
@@ -31,6 +32,8 @@ jobs:
       - run: pip install -r site-publico/requirements.txt
       - run: mkdocs build --config-file mkdocs.yml --site-dir ../_site
         working-directory: site-publico
+      - run: mkdocs build --config-file mkdocs.yml --site-dir ../_site/en
+        working-directory: site-publico-en
       - run: mkdocs build --config-file mkdocs.yml --site-dir ../_site/interno
         working-directory: site-interno
       - run: |

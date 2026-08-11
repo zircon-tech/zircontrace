@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>El ciclo TRACE · ZirconTech</title>
+<title>The TRACE cycle · ZirconTech</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -68,7 +68,7 @@
   .cover h1{font-size:4.2rem;font-weight:700;line-height:1.02;}
   .cover .sub{color:var(--ink-2);font-size:1.3rem;margin-top:1.3rem;max-width:40ch;font-weight:400;}
 
-  /* ---------- Ciclo TRACE overview (5 nodos + flechas) ---------- */
+  /* ---------- TRACE cycle overview (5 nodes + arrows) ---------- */
   .trace-row{display:flex;align-items:stretch;gap:.6rem;margin-top:1.3rem;flex:1;}
   .trace-node{
     flex:1;background:var(--panel-2);border:1px solid rgba(255,255,255,.06);border-radius:14px;
@@ -182,99 +182,99 @@
     <img class="zircon-mark" src="zircon-logo.png" alt="ZirconTech">
     <img class="aws-partner-mark" src="aws-partner-logo-white.webp" alt="AWS Advanced Tier Services Partner">
   </div>
-  <h1 class="display">El ciclo TRACE</h1>
-  <p class="sub">Cómo trabajamos: cada decisión técnica, trazable desde el objetivo de negocio hasta el resultado medido.</p>
-  <div class="badge">Metodología propia, anclada en AWS Well-Architected, CAF y FinOps</div>
+  <h1 class="display">The TRACE cycle</h1>
+  <p class="sub">How we work: every technical decision, traceable from the business objective to the measured result.</p>
+  <div class="badge">A proprietary methodology, anchored in AWS Well-Architected, CAF, and FinOps</div>
   <div class="footer"><img class="footer-logo" src="zircon-logo.png" alt="ZirconTech"></div>
 </section>
 
 <!-- SLIDE 1 — OVERVIEW -->
 <section class="slide">
-  <div class="eyebrow">El mapa completo</div>
-  <h1 class="headline">Cinco etapas, un ciclo que se cierra</h1>
-  <p class="subhead">Cada etapa tiene un entregable concreto y un criterio de salida — no seguimos a la próxima sin cumplirlo. En las próximas slides vemos cada una en detalle, con un ejemplo de cómo se traduce en la práctica.</p>
+  <div class="eyebrow">The full picture</div>
+  <h1 class="headline">Five stages, a cycle that closes</h1>
+  <p class="subhead">Each stage has a concrete deliverable and an exit criterion — we don't move to the next one until it's met. The next slides walk through each stage in detail, with an example of how it plays out in practice.</p>
   <div class="trace-row">
     <div class="trace-node">
       <div class="letter">T</div>
       <h3>Target</h3>
-      <p class="foco">Traducir el problema de negocio en un resultado medible.</p>
+      <p class="foco">Translate the business problem into a measurable outcome.</p>
       <div class="divider"></div>
-      <div class="lbl">Entregable</div>
-      <div class="val">Casos de uso priorizados + KPI + línea base</div>
-      <div class="gate">Gate: caso de uso con dueño, KPI y valor estimado</div>
+      <div class="lbl">Deliverable</div>
+      <div class="val">Prioritized use cases + KPI + baseline</div>
+      <div class="gate">Gate: a use case with owner, KPI, and estimated value</div>
     </div>
     <div class="trace-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
     <div class="trace-node">
       <div class="letter">R</div>
       <h3>Read</h3>
-      <p class="foco">Radiografiar datos, arquitectura, riesgos y factibilidad.</p>
+      <p class="foco">X-ray the data, architecture, risks, and feasibility.</p>
       <div class="divider"></div>
-      <div class="lbl">Entregable</div>
-      <div class="val">Informe de assessment con gaps por perspectiva</div>
-      <div class="gate">Gate: factibilidad confirmada (datos + arquitectura + compliance)</div>
+      <div class="lbl">Deliverable</div>
+      <div class="val">Assessment report with gaps by perspective</div>
+      <div class="gate">Gate: feasibility confirmed (data + architecture + compliance)</div>
     </div>
     <div class="trace-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
     <div class="trace-node">
       <div class="letter">A</div>
       <h3>Architect</h3>
-      <p class="foco">Diseñar la solución objetivo, el roadmap y el costo.</p>
+      <p class="foco">Design the target solution, the roadmap, and the cost.</p>
       <div class="divider"></div>
-      <div class="lbl">Entregable</div>
-      <div class="val">Arquitectura + roadmap + estimación de costos + plan de PoC</div>
-      <div class="gate">Gate: costo aprobado, alcance de PoC acordado</div>
+      <div class="lbl">Deliverable</div>
+      <div class="val">Architecture + roadmap + cost estimate + PoC plan</div>
+      <div class="gate">Gate: cost approved, PoC scope agreed</div>
     </div>
     <div class="trace-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
     <div class="trace-node">
       <div class="letter">C</div>
       <h3>Craft</h3>
-      <p class="foco">Construir iterativo y probar la hipótesis del PoC.</p>
+      <p class="foco">Build iteratively and test the PoC hypothesis.</p>
       <div class="divider"></div>
-      <div class="lbl">Entregable</div>
-      <div class="val">PoC funcionando + evidencia vs. criterios de éxito</div>
-      <div class="gate">Gate: decisión go/no-go documentada</div>
+      <div class="lbl">Deliverable</div>
+      <div class="val">Working PoC + evidence vs. success criteria</div>
+      <div class="gate">Gate: documented go/no-go decision</div>
     </div>
     <div class="trace-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
     <div class="trace-node">
       <div class="letter">E</div>
       <h3>Evolve</h3>
-      <p class="foco">Producción, medición de resultados y mejora continua.</p>
+      <p class="foco">Production, measuring results, and continuous improvement.</p>
       <div class="divider"></div>
-      <div class="lbl">Entregable</div>
-      <div class="val">Artefacto de trazabilidad: objetivo vs. resultado medido</div>
-      <div class="gate">Gate: delta positivo o plan de acción documentado</div>
+      <div class="lbl">Deliverable</div>
+      <div class="val">Traceability artifact: objective vs. measured result</div>
+      <div class="gate">Gate: positive delta or a documented action plan</div>
     </div>
   </div>
   <div class="trace-loop">
     <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
-    <p><b>Evolve cierra el círculo</b> contra el objetivo definido en Target: el resultado medido se compara siempre contra la línea base original. Esa trazabilidad es la firma de ZirconTrace.</p>
+    <p><b>Evolve closes the loop</b> against the objective defined in Target: the measured result is always compared against the original baseline. That traceability is ZirconTrace's signature.</p>
   </div>
   <div class="footer"><img class="footer-logo" src="zircon-logo.png" alt="ZirconTech"></div>
 </section>
 
 <!-- SLIDE 2 — T · TARGET -->
 <section class="slide">
-  <div class="eyebrow">Etapa 1 de 5</div>
+  <div class="eyebrow">Stage 1 of 5</div>
   <div class="stage-head"><span class="big-letter">T</span><h2 class="stage-title">Target</h2></div>
-  <p class="stage-tag">Traducimos el problema de negocio en un resultado medible: casos de uso priorizados, con dueño, KPI y línea base.</p>
+  <p class="stage-tag">We translate the business problem into a measurable outcome: prioritized use cases, each with an owner, a KPI, and a baseline.</p>
   <div class="stage-grid">
     <div class="stage-col">
       <div class="stage-block">
-        <div class="label">Te llevás</div>
-        <p>Un documento breve, sin jerga técnica: el problema central, los casos de uso priorizados (dueño, KPI, línea base, valor estimado), y el paquete de servicios que mejor encuadra el arranque.</p>
+        <div class="label">You get</div>
+        <p>A short document, no technical jargon: the central problem, prioritized use cases (owner, KPI, baseline, estimated value), and the service package that best frames the starting point.</p>
       </div>
       <div class="stage-block gate">
         <div class="label">Gate</div>
-        <p>Hay al menos un caso de uso con dueño, KPI y valor estimado — confirmado por escrito antes de arrancar Read.</p>
+        <p>There's at least one use case with an owner, a KPI, and an estimated value — confirmed in writing before Read starts.</p>
       </div>
     </div>
     <div class="example-card">
-      <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Ejemplo ilustrativo (ficticio) · Andina Retail</div>
+      <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Illustrative example (fictional) · Andina Retail</div>
       <div class="example-rows">
-        <div class="row"><dt>Problema</dt><dd>El equipo de atención al cliente recibe <b>40% más consultas</b> por WhatsApp que el año pasado; tiempo de respuesta promedio de 6 horas.</dd></div>
-        <div class="row"><dt>Caso de uso</dt><dd>Agente de atención por WhatsApp para consultas de estado de pedido y devoluciones.</dd></div>
-        <div class="row"><dt>Dueño</dt><dd>Gerente de Experiencia de Cliente.</dd></div>
-        <div class="row"><dt>KPI / línea base</dt><dd>% de consultas resueltas sin intervención humana — línea base <b>0%</b> (hoy 100% humano).</dd></div>
-        <div class="row"><dt>Valor estimado</dt><dd>Reducir 25% la carga del equipo de CX.</dd></div>
+        <div class="row"><dt>Problem</dt><dd>The customer support team is getting <b>40% more</b> WhatsApp inquiries than last year; average response time is 6 hours.</dd></div>
+        <div class="row"><dt>Use case</dt><dd>A WhatsApp support agent for order status and return inquiries.</dd></div>
+        <div class="row"><dt>Owner</dt><dd>Head of Customer Experience.</dd></div>
+        <div class="row"><dt>KPI / baseline</dt><dd>% of inquiries resolved without human intervention — baseline <b>0%</b> (100% human today).</dd></div>
+        <div class="row"><dt>Estimated value</dt><dd>Reduce the support team's workload by 25%.</dd></div>
       </div>
     </div>
   </div>
@@ -283,26 +283,26 @@
 
 <!-- SLIDE 3 — R · READ -->
 <section class="slide">
-  <div class="eyebrow">Etapa 2 de 5</div>
+  <div class="eyebrow">Stage 2 of 5</div>
   <div class="stage-head"><span class="big-letter">R</span><h2 class="stage-title">Read</h2></div>
-  <p class="stage-tag">Radiografiamos el estado actual — datos, arquitectura, riesgos, factibilidad — antes de diseñar nada.</p>
+  <p class="stage-tag">We x-ray the current state — data, architecture, risks, feasibility — before designing anything.</p>
   <div class="stage-grid">
     <div class="stage-col">
       <div class="stage-block">
-        <div class="label">Te llevás</div>
-        <p>Gaps por perspectiva del CAF, revisión contra los 6 pilares de Well-Architected, estado de tus datos, y tu exposición bajo la Ley 21.719 si operás en Chile.</p>
+        <div class="label">You get</div>
+        <p>Gaps by CAF perspective, a review against the 6 pillars of Well-Architected, the state of your data, and your exposure under Chile's Law 21.719 if you operate there.</p>
       </div>
       <div class="stage-block gate">
         <div class="label">Gate</div>
-        <p>Factibilidad confirmada — datos, arquitectura y compliance — antes de pasar a Architect.</p>
+        <p>Feasibility confirmed — data, architecture, and compliance — before moving to Architect.</p>
       </div>
     </div>
     <div class="example-card">
-      <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Ejemplo ilustrativo (ficticio) · Andina Retail</div>
+      <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Illustrative example (fictional) · Andina Retail</div>
       <div class="example-rows">
-        <div class="row"><dt>Hallazgo técnico</dt><dd>Los datos de pedidos viven en un ERP legado sin API — gap <b>Alto</b> en la perspectiva Platform del CAF.</dd></div>
-        <div class="row"><dt>Compliance (Ley 21.719)</dt><dd>Andina procesa datos de clientes en Chile: se identifica la necesidad de anonimizar el historial de compras antes de usarlo para entrenar el agente.</dd></div>
-        <div class="row"><dt>Conclusión</dt><dd>Factibilidad confirmada, <b>con condición</b>: resolver el acceso a datos del ERP antes de Architect.</dd></div>
+        <div class="row"><dt>Technical finding</dt><dd>Order data lives in a legacy ERP with no API — a <b>High</b> severity gap in the CAF Platform perspective.</dd></div>
+        <div class="row"><dt>Compliance (Law 21.719)</dt><dd>Andina processes customer data in Chile: purchase history needs to be anonymized before it's used to train the agent.</dd></div>
+        <div class="row"><dt>Conclusion</dt><dd>Feasibility confirmed, <b>conditional on</b> resolving ERP data access before Architect.</dd></div>
       </div>
     </div>
   </div>
@@ -311,26 +311,26 @@
 
 <!-- SLIDE 4 — A · ARCHITECT -->
 <section class="slide">
-  <div class="eyebrow">Etapa 3 de 5</div>
+  <div class="eyebrow">Stage 3 of 5</div>
   <div class="stage-head"><span class="big-letter">A</span><h2 class="stage-title">Architect</h2></div>
-  <p class="stage-tag">Diseñamos la solución objetivo, el roadmap y el costo — antes de construir, no después.</p>
+  <p class="stage-tag">We design the target solution, the roadmap, and the cost — before we build, not after.</p>
   <div class="stage-grid">
     <div class="stage-col">
       <div class="stage-block">
-        <div class="label">Te llevás</div>
-        <p>Diagrama de arquitectura, checklist contra los 6 pilares de Well-Architected, roadmap por fases, estimación de costos mes a mes, y criterios de éxito del PoC.</p>
+        <div class="label">You get</div>
+        <p>An architecture diagram, a checklist against the 6 pillars of Well-Architected, a phased roadmap, month-by-month cost estimates, and the PoC's success criteria.</p>
       </div>
       <div class="stage-block gate">
         <div class="label">Gate</div>
-        <p>Costo estimado aprobado y alcance del PoC acordado, con criterios de éxito medibles.</p>
+        <p>Estimated cost approved and PoC scope agreed, with measurable success criteria.</p>
       </div>
     </div>
     <div class="example-card">
-      <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Ejemplo ilustrativo (ficticio) · Andina Retail</div>
+      <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Illustrative example (fictional) · Andina Retail</div>
       <div class="example-rows">
-        <div class="row"><dt>Arquitectura</dt><dd>Amazon Bedrock (Claude) + Lambda + DynamoDB, integrado con la WhatsApp Business API.</dd></div>
-        <div class="row"><dt>Costo estimado</dt><dd>~<b>USD 800/mes</b> de infraestructura (región sa-east-1).</dd></div>
-        <div class="row"><dt>Criterio de éxito del PoC</dt><dd>≥70% de consultas resueltas sin escalar a un humano, medido sobre 200 conversaciones reales.</dd></div>
+        <div class="row"><dt>Architecture</dt><dd>Amazon Bedrock (Claude) + Lambda + DynamoDB, integrated with the WhatsApp Business API.</dd></div>
+        <div class="row"><dt>Estimated cost</dt><dd>~<b>USD 800/month</b> in infrastructure (sa-east-1 region).</dd></div>
+        <div class="row"><dt>PoC success criterion</dt><dd>≥70% of inquiries resolved without escalating to a human, measured across 200 real conversations.</dd></div>
       </div>
     </div>
   </div>
@@ -339,26 +339,26 @@
 
 <!-- SLIDE 5 — C · CRAFT -->
 <section class="slide">
-  <div class="eyebrow">Etapa 4 de 5</div>
+  <div class="eyebrow">Stage 4 of 5</div>
   <div class="stage-head"><span class="big-letter">C</span><h2 class="stage-title">Craft</h2></div>
-  <p class="stage-tag">Construimos de forma iterativa y probamos la hipótesis contra los criterios de éxito definidos en Architect.</p>
+  <p class="stage-tag">We build iteratively and test the hypothesis against the success criteria defined in Architect.</p>
   <div class="stage-grid">
     <div class="stage-col">
       <div class="stage-block">
-        <div class="label">Te llevás</div>
-        <p>Evidencia de testing por entorno, cada criterio de éxito con su resultado, una demo de cierre, y una decisión explícita de continuar o no, documentada.</p>
+        <div class="label">You get</div>
+        <p>Testing evidence per environment, each success criterion with its result, a closing demo, and an explicit, documented go/no-go decision.</p>
       </div>
       <div class="stage-block gate">
         <div class="label">Gate</div>
-        <p>Todos los criterios de éxito tienen un resultado registrado y hay una decisión de continuidad documentada.</p>
+        <p>Every success criterion has a recorded result, and there's a documented continuity decision.</p>
       </div>
     </div>
     <div class="example-card">
-      <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Ejemplo ilustrativo (ficticio) · Andina Retail</div>
+      <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Illustrative example (fictional) · Andina Retail</div>
       <div class="example-rows">
-        <div class="row"><dt>Construcción</dt><dd>3 sprints. PoC probado contra 200 conversaciones históricas y validado en vivo con 20 clientes reales.</dd></div>
-        <div class="row"><dt>Resultado</dt><dd><b>74%</b> de consultas resueltas sin intervención humana — supera el criterio de éxito (70%).</dd></div>
-        <div class="row"><dt>Decisión</dt><dd><b>Go a producción</b>, aprobada por la Gerente de Experiencia de Cliente.</dd></div>
+        <div class="row"><dt>Build</dt><dd>3 sprints. The PoC was tested against 200 historical conversations and validated live with 20 real customers.</dd></div>
+        <div class="row"><dt>Result</dt><dd><b>74%</b> of inquiries resolved without human intervention — beats the 70% success criterion.</dd></div>
+        <div class="row"><dt>Decision</dt><dd><b>Go to production</b>, approved by the Head of Customer Experience.</dd></div>
       </div>
     </div>
   </div>
@@ -367,26 +367,26 @@
 
 <!-- SLIDE 6 — E · EVOLVE -->
 <section class="slide">
-  <div class="eyebrow">Etapa 5 de 5</div>
+  <div class="eyebrow">Stage 5 of 5</div>
   <div class="stage-head"><span class="big-letter">E</span><h2 class="stage-title">Evolve</h2></div>
-  <p class="stage-tag">Producción, medición de resultados y mejora continua — acá cerramos el círculo contra el objetivo definido en Target.</p>
+  <p class="stage-tag">Production, measuring results, and continuous improvement — this is where we close the loop against the objective defined in Target.</p>
   <div class="stage-grid">
     <div class="stage-col">
       <div class="stage-block">
-        <div class="label">Te llevás</div>
-        <p>El artefacto de trazabilidad: objetivo de Target, línea base, KPI medido en producción y delta. Dashboards de costos, y un plan de evolución.</p>
+        <div class="label">You get</div>
+        <p>The traceability artifact: the Target objective, the baseline, the KPI measured in production, and the delta. Cost dashboards, and an evolution plan.</p>
       </div>
       <div class="stage-block gate">
         <div class="label">Gate</div>
-        <p>Delta positivo, o si no lo es, explicado con un plan de acción — y al menos un ítem de evolución para el próximo período.</p>
+        <p>A positive delta, or if not, explained with an action plan — and at least one evolution item for the next period.</p>
       </div>
     </div>
     <div class="example-card">
-      <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Ejemplo ilustrativo (ficticio) · Andina Retail</div>
+      <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Illustrative example (fictional) · Andina Retail</div>
       <div class="example-rows">
-        <div class="row"><dt>2 meses en producción</dt><dd>KPI medido: <b>71%</b> de consultas resueltas sin intervención (línea base 0%).</dd></div>
-        <div class="row"><dt>Delta</dt><dd><b>+71 puntos</b> vs. línea base — algo por debajo del pico del PoC (74%), explicado por la mayor variedad de consultas reales.</dd></div>
-        <div class="row"><dt>Plan de evolución</dt><dd>Sumar canal de email y abrir un nuevo ciclo de Target para devoluciones automatizadas.</dd></div>
+        <div class="row"><dt>2 months in production</dt><dd>Measured KPI: <b>71%</b> of inquiries resolved without intervention (0% baseline).</dd></div>
+        <div class="row"><dt>Delta</dt><dd><b>+71 points</b> vs. baseline — slightly below the PoC's peak (74%), explained by the wider variety of real-world inquiries.</dd></div>
+        <div class="row"><dt>Evolution plan</dt><dd>Add an email channel and open a new Target cycle for automated returns.</dd></div>
       </div>
     </div>
   </div>
@@ -395,27 +395,27 @@
 
 <!-- SLIDE 7 — CLOSING -->
 <section class="slide">
-  <div class="eyebrow">Próximos pasos</div>
+  <div class="eyebrow">Next steps</div>
   <div class="closing">
-    <h2 class="headline" style="max-width:22ch">Empecemos con tu ciclo TRACE</h2>
-    <p class="subhead">De un problema de negocio a un resultado medido y trazable — con gates claros en cada paso del camino.</p>
+    <h2 class="headline" style="max-width:22ch">Let's start your TRACE cycle</h2>
+    <p class="subhead">From a business problem to a measured, traceable result — with clear gates at every step of the way.</p>
     <div class="steps">
       <div class="step">
         <div class="n">01</div>
-        <h4>Conversemos</h4>
-        <p>Una reunión breve para entender tu contexto y el problema que querés resolver.</p>
+        <h4>Let's talk</h4>
+        <p>A short meeting to understand your context and the problem you want to solve.</p>
         <svg class="arr ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </div>
       <div class="step">
         <div class="n">02</div>
-        <h4>Arrancamos Target</h4>
-        <p>Salimos con casos de uso priorizados, cada uno con dueño, KPI y línea base.</p>
+        <h4>Start with Target</h4>
+        <p>We leave with prioritized use cases, each with an owner, a KPI, and a baseline.</p>
         <svg class="arr ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </div>
       <div class="step">
         <div class="n">03</div>
-        <h4>Recorremos el ciclo</h4>
-        <p>Read, Architect, Craft y Evolve — con un gate de calidad en cada etapa.</p>
+        <h4>Run the cycle</h4>
+        <p>Read, Architect, Craft, and Evolve — with a quality gate at every stage.</p>
       </div>
     </div>
     <div class="close-lockup">
@@ -428,12 +428,12 @@
 
 </div><!-- /deck -->
 
-<div class="hint" id="hint">← → para navegar · F pantalla completa · P para PDF</div>
+<div class="hint" id="hint">← → to navigate · F fullscreen · P to export PDF</div>
 <div class="counter"><b id="cur">01</b> / <span id="total">??</span></div>
 <div class="dots" id="dots"></div>
 <div class="nav">
-  <button id="prev" aria-label="Anterior"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-  <button id="next" aria-label="Siguiente"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+  <button id="prev" aria-label="Previous"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <button id="next" aria-label="Next"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
 </div>
 
 <script>

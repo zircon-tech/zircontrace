@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How we work · The TRACE cycle · ZirconTech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#061326;
+    --navy-2:#082247;
+    --panel-2:#0C2444;
+    --teal:#2583E7;
+    --teal-dim:#1767BF;
+    --cyan:#75B9FF;
+    --aws:#FF9900;
+    --ink:#E8EEF5;
+    --ink-2:#94A3B8;
+    --ink-3:#5B6E88;
+    --line:rgba(37,131,231,.24);
+    --shadow:0 24px 60px -20px rgba(0,0,0,.65);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1200px 700px at 82% -8%, rgba(37,131,231,.10), transparent 60%),
+      radial-gradient(900px 600px at -8% 108%, rgba(255,153,0,.05), transparent 55%),
+      linear-gradient(180deg,var(--navy) 0%, var(--navy-2) 100%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    line-height:1.5;
+  }
+  h1,h2,h3,.display{font-family:'Space Grotesk','Inter',sans-serif;letter-spacing:-.01em;}
+
+  .page{max-width:1040px;margin:0 auto;padding:3.6vh 6vw 4vh;position:relative;}
+  .nodes{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.4;}
+  .page > *{position:relative;z-index:1;}
+
+  .top{
+    display:flex;align-items:center;justify-content:space-between;gap:1.5rem;
+    padding-bottom:1.4rem;border-bottom:1px solid var(--line);margin-bottom:1.6rem;flex-wrap:wrap;
+  }
+  .logos{display:flex;align-items:center;gap:1.2rem;}
+  .zircon-mark{height:30px;width:auto;display:block;}
+  .aws-partner-mark{height:64px;width:auto;display:block;}
+  .tag{
+    font-family:'Space Grotesk';font-size:.86rem;color:var(--ink-2);
+    border:1px solid var(--line);border-radius:999px;padding:.45rem 1rem;white-space:nowrap;
+  }
+  .tag b{color:var(--teal);font-weight:600;}
+
+  .eyebrow{
+    font-family:'Space Grotesk';font-weight:600;font-size:.76rem;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--teal);
+    display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;
+  }
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--teal);display:inline-block;border-radius:2px;}
+  h1.title{font-weight:700;line-height:1.06;font-size:clamp(1.7rem,3.8vw,2.5rem);max-width:24ch;}
+  .lede{color:var(--ink-2);font-size:.98rem;line-height:1.48;margin-top:.85rem;max-width:70ch;}
+  .lede b{color:var(--cyan);font-weight:600;}
+
+  /* ---------- TRACE timeline ---------- */
+  .timeline{margin-top:1.6rem;display:flex;flex-direction:column;gap:.75rem;position:relative;}
+  .timeline::before{
+    content:"";position:absolute;left:20px;top:22px;bottom:22px;width:2px;
+    background:linear-gradient(180deg,var(--teal),var(--teal-dim) 70%,rgba(37,131,231,.15));
+  }
+  .step{display:grid;grid-template-columns:40px 1fr;gap:1.1rem;align-items:start;position:relative;}
+  .step .num{
+    font-family:'Space Grotesk';font-weight:700;font-size:1rem;color:var(--teal);
+    width:40px;height:40px;border-radius:11px;background:var(--navy-2);border:1px solid var(--teal);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;z-index:2;
+    box-shadow:0 0 0 5px var(--navy);
+  }
+  .card{
+    background:var(--panel-2);border:1px solid rgba(255,255,255,.06);border-radius:13px;
+    border-left:3px solid var(--teal);padding:.85rem 1.1rem;position:relative;overflow:hidden;
+  }
+  .card::after{content:"";position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--teal),var(--aws));opacity:.9;}
+  .card-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.35rem;}
+  .card h2{font-weight:600;font-size:1.02rem;line-height:1.1;}
+  .card h2 span{color:var(--teal);}
+  .card p{color:var(--ink-2);font-size:.85rem;line-height:1.42;}
+  .card p b{color:var(--cyan);font-weight:600;}
+  .card .row{display:flex;gap:1.4rem;margin-top:.5rem;flex-wrap:wrap;}
+  .card .col-label{font-family:'Space Grotesk';font-weight:600;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:.15rem;}
+  .card .col-val{color:var(--ink);font-size:.83rem;line-height:1.35;}
+  .card .gate{color:var(--cyan);font-weight:500;}
+
+  /* ---------- Traceability callout ---------- */
+  .deliverable{
+    margin-top:1.1rem;display:flex;align-items:flex-start;gap:.7rem;
+    background:linear-gradient(90deg,rgba(37,131,231,.12),rgba(255,153,0,.06));
+    border:1px solid var(--line);border-left:3px solid var(--aws);border-radius:12px;padding:.85rem 1.1rem;
+  }
+  .deliverable svg{width:20px;height:20px;stroke:var(--aws);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:2px;}
+  .deliverable p{font-size:.88rem;color:var(--ink);line-height:1.42;}
+  .deliverable b{color:var(--cyan);font-weight:600;}
+
+  .foot{
+    margin-top:1.6rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+    font-size:.78rem;color:var(--ink-3);font-family:'Space Grotesk';
+  }
+  .foot-logo{height:20px;width:auto;opacity:.75;}
+  .foot .partner{color:var(--ink-2);}
+  .foot .partner b{color:var(--teal);font-weight:600;}
+
+  @media (max-width:640px){
+    .step{grid-template-columns:34px 1fr;gap:.9rem;}
+    .step .num{width:34px;height:34px;font-size:.9rem;border-radius:10px;}
+    .timeline::before{left:17px;}
+  }
+
+  @media print{
+    @page{size:A4 portrait;margin:0;}
+    html,body{width:210mm;height:297mm;}
+    body{
+      -webkit-print-color-adjust:exact;print-color-adjust:exact;
+      background:
+        radial-gradient(1200px 700px at 82% -8%, rgba(37,131,231,.10), transparent 60%),
+        radial-gradient(900px 600px at -8% 108%, rgba(255,153,0,.05), transparent 55%),
+        linear-gradient(180deg,var(--navy) 0%, var(--navy-2) 100%) !important;
+    }
+    .nodes{display:none;}
+    .page{max-width:none;padding:10mm 14mm;height:297mm;display:flex;flex-direction:column;overflow:hidden;}
+    .card,.step{break-inside:avoid;}
+    .top{padding-bottom:.7rem;margin-bottom:.8rem;}
+    .aws-partner-mark{height:46px;}
+    .zircon-mark{height:22px;}
+    h1.title{font-size:1.5rem;}
+    .lede{margin-top:.5rem;font-size:.86rem;}
+    .timeline{margin-top:.9rem;gap:.5rem;}
+    .timeline::before{top:18px;bottom:18px;}
+    .step{grid-template-columns:34px 1fr;gap:.9rem;}
+    .step .num{width:34px;height:34px;font-size:.9rem;}
+    .card{padding:.65rem .95rem;}
+    .card h2{font-size:.92rem;}
+    .card p{font-size:.78rem;}
+    .card .col-val{font-size:.75rem;}
+    .deliverable{margin-top:.5rem;padding:.55rem .85rem;}
+    .foot{margin-top:auto;padding-top:.7rem;}
+  }
+</style>
+</head>
+<body>
+<svg class="nodes" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice">
+  <g stroke="rgba(37,131,231,.5)" stroke-width="1" fill="none">
+    <line x1="980" y1="90" x2="1120" y2="190"/><line x1="1120" y1="190" x2="1040" y2="330"/>
+    <line x1="120" y1="560" x2="260" y2="620"/>
+  </g>
+  <g fill="#2583E7">
+    <circle cx="980" cy="90" r="4"/><circle cx="1120" cy="190" r="5"/><circle cx="1040" cy="330" r="4"/>
+    <circle cx="120" cy="560" r="4"/><circle cx="260" cy="620" r="5"/>
+  </g>
+</svg>
+
+<div class="page">
+
+  <div class="top">
+    <div class="logos">
+      <img class="zircon-mark" src="zircon-logo.png" alt="ZirconTech">
+      <img class="aws-partner-mark" src="aws-partner-logo-white.webp" alt="AWS Advanced Tier Services Partner">
+    </div>
+    <div class="tag">AWS Advanced Tier <b>Partner</b></div>
+  </div>
+
+  <div class="eyebrow">How we work</div>
+  <h1 class="title">The TRACE cycle</h1>
+  <p class="lede">Every technical decision, traceable from the business objective to the measured result. We didn't invent new stages: we anchor on AWS Well-Architected, the AWS Cloud Adoption Framework, FinOps, and Working Backwards, and we add what no consultancy our size makes explicit, <b>that the final outcome can be traced, step by step, back to the business decision that started it.</b></p>
+
+  <div class="timeline">
+
+    <div class="step">
+      <div class="num">T</div>
+      <div class="card">
+        <div class="card-head"><h2><span>Target</span> · Translate the business problem into a measurable outcome</h2></div>
+        <p>We leave with prioritized use cases, each with an owner, a KPI, and a baseline.</p>
+        <div class="row">
+          <div><div class="col-label">Deliverable</div><div class="col-val">Opportunity 1-pager + KPIs and baseline</div></div>
+          <div><div class="col-label">Gate</div><div class="col-val gate">A use case with owner, KPI, and estimated value</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">R</div>
+      <div class="card">
+        <div class="card-head"><h2><span>Read</span> · X-ray the current state</h2></div>
+        <p>Data, architecture, risks, and feasibility, using AWS Well-Architected Review and AWS CAF as our lens.</p>
+        <div class="row">
+          <div><div class="col-label">Deliverable</div><div class="col-val">Assessment report with gaps by perspective</div></div>
+          <div><div class="col-label">Gate</div><div class="col-val gate">Feasibility confirmed: data, architecture, and compliance</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">A</div>
+      <div class="card">
+        <div class="card-head"><h2><span>Architect</span> · Design the solution, roadmap, and cost</h2></div>
+        <p>Reviewed against the 6 pillars of Well-Architected, with cost estimation done before we build.</p>
+        <div class="row">
+          <div><div class="col-label">Deliverable</div><div class="col-val">Architecture + roadmap + cost estimate + PoC plan</div></div>
+          <div><div class="col-label">Gate</div><div class="col-val gate">Cost approved, PoC scope agreed</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">C</div>
+      <div class="card">
+        <div class="card-head"><h2><span>Craft</span> · Build iteratively</h2></div>
+        <p>We test the hypothesis against success criteria defined upfront in Architect.</p>
+        <div class="row">
+          <div><div class="col-label">Deliverable</div><div class="col-val">Working PoC + evidence vs. success criteria</div></div>
+          <div><div class="col-label">Gate</div><div class="col-val gate">Documented go/no-go decision</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">E</div>
+      <div class="card">
+        <div class="card-head"><h2><span>Evolve</span> · Production and continuous improvement</h2></div>
+        <p>We measure the real result against the objective defined in Target. That comparison is ZirconTrace's signature.</p>
+        <div class="row">
+          <div><div class="col-label">Deliverable</div><div class="col-val">Dashboards + traceability artifact (objective vs. result)</div></div>
+          <div><div class="col-label">Gate</div><div class="col-val gate">Positive delta or a documented action plan</div></div>
+        </div>
+        <div class="deliverable">
+          <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
+          <p><b>Evolve closes the loop</b> against the objective defined in Target: it's the traceability promise no consultancy our size makes explicit.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    <img class="foot-logo" src="zircon-logo.png" alt="ZirconTech">
+    <span class="partner"><b>ZirconTech</b> · AWS Advanced Tier Services Partner</span>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,10 +1,11 @@
 site_name: ZirconTrace™ · ZirconTech
-site_description: "Cómo trabajamos: el ciclo TRACE de ZirconTech"
-site_url: https://zircon-tech.github.io/zircontrace/
+site_description: "How we work: ZirconTech's TRACE cycle"
+site_url: https://zircon-tech.github.io/zircontrace/en/
 theme:
   name: material
   logo: assets/logo.svg
   favicon: assets/favicon.jpg
+  language: en
   palette:
     scheme: slate
     primary: custom
@@ -21,20 +22,20 @@ extra_javascript:
   - javascripts/mermaid.min.js
   - javascripts/mermaid-init.js
 nav:
-  - Inicio: index.md
-  - El ciclo TRACE:
-      - Resumen: ciclo-trace.md
+  - Home: index.md
+  - The TRACE cycle:
+      - Overview: cycle-trace.md
       - Target: etapas/target.md
       - Read: etapas/read.md
       - Architect: etapas/architect.md
       - Craft: etapas/craft.md
       - Evolve: etapas/evolve.md
-  - Cómo trabajamos: como-trabajamos.md
-  - Recursos:
-      - Glosario: glosario.md
-      - Referencias: referencias.md
-  - Contacto: contacto.md
-  - English: https://zircon-tech.github.io/zircontrace/en/
+  - How we work: how-we-work.md
+  - Resources:
+      - Glossary: glossary.md
+      - References: references.md
+  - Contact: contact.md
+  - Español: https://zircon-tech.github.io/zircontrace/
 markdown_extensions:
   - attr_list
   - tables

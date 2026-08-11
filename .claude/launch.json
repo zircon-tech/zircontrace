@@ -18,6 +18,12 @@
       "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "8767", "--directory", "presentation", "--bind", "127.0.0.1"],
       "port": 8767
+    },
+    {
+      "name": "zircontrace-site-en",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "mkdocs", "serve", "-f", "site-publico-en/mkdocs.yml", "-a", "127.0.0.1:8768"],
+      "port": 8768
     }
   ]
 }
