@@ -1,10 +1,13 @@
-name: Deploy ZirconTrace docs (site-publico)
+name: Deploy ZirconTrace sites
 
 on:
   push:
     branches: [main]
     paths:
       - 'site-publico/**'
+      - 'site-interno/**'
+      - 'methodology/**'
+      - 'presentation/**'
       - '.github/workflows/deploy-docs.yml'
   workflow_dispatch: {}
 
@@ -28,6 +31,12 @@ jobs:
       - run: pip install -r site-publico/requirements.txt
       - run: mkdocs build --config-file mkdocs.yml --site-dir ../_site
         working-directory: site-publico
+      - run: mkdocs build --config-file mkdocs.yml --site-dir ../_site/interno
+        working-directory: site-interno
+      - run: |
+          mkdir -p _site/presentation
+          cp presentation/*.html presentation/*.png presentation/*.webp _site/presentation/
+      - run: echo -e "User-agent: *\nDisallow: /interno/" > _site/robots.txt
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
