@@ -36,7 +36,8 @@ jobs:
       - run: |
           mkdir -p _site/presentation
           cp presentation/*.html presentation/*.png presentation/*.webp _site/presentation/
-      - run: echo -e "User-agent: *\nDisallow: /interno/" > _site/robots.txt
+      - run: |
+          printf 'User-agent: *\nDisallow: /interno/\n' > _site/robots.txt
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
