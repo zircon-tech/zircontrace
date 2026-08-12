@@ -38,84 +38,111 @@
   }
   h1,h2,h3,.display{font-family:'Space Grotesk','Inter',sans-serif;letter-spacing:-.01em;}
 
-  .page{max-width:1040px;margin:0 auto;padding:3.6vh 6vw 4vh;position:relative;}
+  .grid-bg{
+    position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.4;
+    background-image:linear-gradient(rgba(37,131,231,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(37,131,231,.06) 1px,transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(120% 70% at 85% 0%,#000 10%,transparent 68%);
+    mask-image:radial-gradient(120% 70% at 85% 0%,#000 10%,transparent 68%);
+  }
   .nodes{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.4;}
-  .page > *{position:relative;z-index:1;}
+
+  .page{max-width:1040px;margin:0 auto;padding:3.6vh 6vw 4vh;position:relative;z-index:1;}
 
   .top{
     display:flex;align-items:center;justify-content:space-between;gap:1.5rem;
-    padding-bottom:1.4rem;border-bottom:1px solid var(--line);margin-bottom:1.6rem;flex-wrap:wrap;
+    padding-bottom:1.4rem;border-bottom:1px solid var(--line);margin-bottom:1.5rem;flex-wrap:wrap;
   }
-  .logos{display:flex;align-items:center;gap:1.2rem;}
-  .zircon-mark{height:30px;width:auto;display:block;}
-  .aws-partner-mark{height:64px;width:auto;display:block;}
+  .logos{display:flex;align-items:center;gap:1rem;}
+  .zircon-mark{height:28px;width:auto;display:block;}
+  .aws-lockup{
+    display:inline-flex;align-items:center;gap:.6rem;
+    background:rgba(255,255,255,.10);border:1px solid rgba(255,153,0,.45);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.10), 0 8px 22px -14px rgba(255,153,0,.6);
+    border-radius:11px;padding:.4rem .7rem;
+  }
+  .aws-lockup img{height:26px;width:auto;display:block;filter:brightness(1.12) saturate(1.15);}
   .tag{
-    font-family:'Space Grotesk';font-size:.86rem;color:var(--ink-2);
-    border:1px solid var(--line);border-radius:999px;padding:.45rem 1rem;white-space:nowrap;
+    font-family:'Space Grotesk';font-size:.84rem;color:var(--ink-2);
+    border:1px solid var(--line);border-radius:999px;padding:.42rem .95rem;white-space:nowrap;
   }
   .tag b{color:var(--teal);font-weight:600;}
 
   .eyebrow{
     font-family:'Space Grotesk';font-weight:600;font-size:.76rem;
     letter-spacing:.2em;text-transform:uppercase;color:var(--teal);
-    display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;
+    display:flex;align-items:center;gap:.6rem;margin-bottom:.7rem;
   }
   .eyebrow::before{content:"";width:22px;height:2px;background:var(--teal);display:inline-block;border-radius:2px;}
-  h1.title{font-weight:700;line-height:1.06;font-size:clamp(1.7rem,3.8vw,2.5rem);max-width:24ch;}
-  .lede{color:var(--ink-2);font-size:.98rem;line-height:1.48;margin-top:.85rem;max-width:70ch;}
+  h1.title{font-weight:700;line-height:1.04;font-size:clamp(1.9rem,4vw,2.7rem);max-width:24ch;}
+  h1.title em{font-style:normal;background:linear-gradient(180deg,var(--cyan),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .lede{color:var(--ink-2);font-size:.96rem;line-height:1.48;margin-top:.75rem;max-width:72ch;}
   .lede b{color:var(--cyan);font-weight:600;}
 
+  /* ---------- Metrics strip ---------- */
+  .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-top:1.2rem;max-width:640px;}
+  .metrics .m{
+    display:flex;flex-direction:column;gap:.15rem;
+    background:rgba(37,131,231,.06);border:1px solid rgba(255,255,255,.07);
+    border-radius:11px;padding:.7rem .85rem;
+  }
+  .metrics .m b{font-family:'Space Grotesk';font-size:1.28rem;color:var(--ink);font-weight:600;line-height:1;}
+  .metrics .m span{font-size:.65rem;color:var(--ink-3);letter-spacing:.05em;text-transform:uppercase;font-family:'Space Grotesk';}
+
   /* ---------- Timeline TRACE ---------- */
-  .timeline{margin-top:1.6rem;display:flex;flex-direction:column;gap:.75rem;position:relative;}
+  .timeline{margin-top:1.5rem;display:flex;flex-direction:column;gap:.65rem;position:relative;}
   .timeline::before{
-    content:"";position:absolute;left:20px;top:22px;bottom:22px;width:2px;
+    content:"";position:absolute;left:19px;top:22px;bottom:22px;width:2px;
     background:linear-gradient(180deg,var(--teal),var(--teal-dim) 70%,rgba(37,131,231,.15));
   }
   .step{display:grid;grid-template-columns:40px 1fr;gap:1.1rem;align-items:start;position:relative;}
   .step .num{
-    font-family:'Space Grotesk';font-weight:700;font-size:1rem;color:var(--teal);
-    width:40px;height:40px;border-radius:11px;background:var(--navy-2);border:1px solid var(--teal);
+    font-family:'Space Grotesk';font-weight:700;font-size:1rem;color:#fff;
+    width:40px;height:40px;border-radius:11px;
+    background:linear-gradient(160deg,var(--teal),var(--teal-dim));
+    box-shadow:0 6px 16px -8px var(--teal), 0 0 0 5px var(--navy);
     display:flex;align-items:center;justify-content:center;flex-shrink:0;z-index:2;
-    box-shadow:0 0 0 5px var(--navy);
   }
   .card{
     background:var(--panel-2);border:1px solid rgba(255,255,255,.06);border-radius:13px;
-    border-left:3px solid var(--teal);padding:.85rem 1.1rem;position:relative;overflow:hidden;
+    padding:.8rem 1.1rem .9rem;position:relative;overflow:hidden;
   }
   .card::after{content:"";position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--teal),var(--aws));opacity:.9;}
-  .card-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.35rem;}
-  .card h2{font-weight:600;font-size:1.02rem;line-height:1.1;}
+  .card-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.3rem;}
+  .card h2{font-weight:600;font-size:1rem;line-height:1.1;}
   .card h2 span{color:var(--teal);}
-  .card p{color:var(--ink-2);font-size:.85rem;line-height:1.42;}
+  .card p{color:var(--ink-2);font-size:.84rem;line-height:1.4;}
   .card p b{color:var(--cyan);font-weight:600;}
-  .card .row{display:flex;gap:1.4rem;margin-top:.5rem;flex-wrap:wrap;}
-  .card .col-label{font-family:'Space Grotesk';font-weight:600;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:.15rem;}
-  .card .col-val{color:var(--ink);font-size:.83rem;line-height:1.35;}
+  .card .row{
+    display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:.55rem;padding-top:.5rem;
+    border-top:1px dashed rgba(37,131,231,.2);
+  }
+  .card .col-label{font-family:'Space Grotesk';font-weight:600;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:.15rem;}
+  .card .col-val{color:var(--ink);font-size:.82rem;line-height:1.32;}
   .card .gate{color:var(--cyan);font-weight:500;}
 
   /* ---------- Trazabilidad callout ---------- */
   .deliverable{
-    margin-top:1.1rem;display:flex;align-items:flex-start;gap:.7rem;
-    background:linear-gradient(90deg,rgba(37,131,231,.12),rgba(255,153,0,.06));
-    border:1px solid var(--line);border-left:3px solid var(--aws);border-radius:12px;padding:.85rem 1.1rem;
+    margin-top:1rem;display:flex;align-items:flex-start;gap:.7rem;
+    background:linear-gradient(90deg,rgba(37,131,231,.14),rgba(255,153,0,.05));
+    border:1px solid var(--line);border-radius:12px;padding:.8rem 1.05rem;
   }
-  .deliverable svg{width:20px;height:20px;stroke:var(--aws);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:2px;}
-  .deliverable p{font-size:.88rem;color:var(--ink);line-height:1.42;}
+  .deliverable svg{width:19px;height:19px;stroke:var(--aws);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:2px;}
+  .deliverable p{font-size:.86rem;color:var(--ink);line-height:1.4;}
   .deliverable b{color:var(--cyan);font-weight:600;}
 
   .foot{
-    margin-top:1.6rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--line);
     display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
-    font-size:.78rem;color:var(--ink-3);font-family:'Space Grotesk';
   }
-  .foot-logo{height:20px;width:auto;opacity:.75;}
-  .foot .partner{color:var(--ink-2);}
-  .foot .partner b{color:var(--teal);font-weight:600;}
+  .foot-logo{height:19px;width:auto;opacity:.75;}
+  .foot .tag{font-size:.78rem;}
 
   @media (max-width:640px){
     .step{grid-template-columns:34px 1fr;gap:.9rem;}
     .step .num{width:34px;height:34px;font-size:.9rem;border-radius:10px;}
-    .timeline::before{left:17px;}
+    .timeline::before{left:16px;}
+    .metrics{grid-template-columns:1fr 1fr;max-width:none;}
   }
 
   @media print{
@@ -128,28 +155,33 @@
         radial-gradient(900px 600px at -8% 108%, rgba(255,153,0,.05), transparent 55%),
         linear-gradient(180deg,var(--navy) 0%, var(--navy-2) 100%) !important;
     }
-    .nodes{display:none;}
-    .page{max-width:none;padding:10mm 14mm;height:297mm;display:flex;flex-direction:column;overflow:hidden;}
+    .nodes,.grid-bg{display:none;}
+    .page{max-width:none;padding:9mm 13mm;height:297mm;display:flex;flex-direction:column;overflow:hidden;}
     .card,.step{break-inside:avoid;}
-    .top{padding-bottom:.7rem;margin-bottom:.8rem;}
-    .aws-partner-mark{height:46px;}
-    .zircon-mark{height:22px;}
+    .top{padding-bottom:.6rem;margin-bottom:.7rem;}
+    .aws-lockup img{height:22px;}
+    .zircon-mark{height:20px;}
     h1.title{font-size:1.5rem;}
-    .lede{margin-top:.5rem;font-size:.86rem;}
-    .timeline{margin-top:.9rem;gap:.5rem;}
-    .timeline::before{top:18px;bottom:18px;}
-    .step{grid-template-columns:34px 1fr;gap:.9rem;}
-    .step .num{width:34px;height:34px;font-size:.9rem;}
-    .card{padding:.65rem .95rem;}
-    .card h2{font-size:.92rem;}
-    .card p{font-size:.78rem;}
-    .card .col-val{font-size:.75rem;}
-    .deliverable{margin-top:.5rem;padding:.55rem .85rem;}
-    .foot{margin-top:auto;padding-top:.7rem;}
+    .lede{margin-top:.4rem;font-size:.82rem;}
+    .metrics{margin-top:.8rem;}
+    .metrics .m{padding:.5rem .65rem;}
+    .metrics .m b{font-size:1.05rem;}
+    .timeline{margin-top:.8rem;gap:.45rem;}
+    .timeline::before{top:16px;bottom:16px;}
+    .step{grid-template-columns:32px 1fr;gap:.85rem;}
+    .step .num{width:32px;height:32px;font-size:.85rem;}
+    .card{padding:.55rem .85rem .65rem;}
+    .card h2{font-size:.88rem;}
+    .card p{font-size:.75rem;}
+    .card .col-val{font-size:.73rem;}
+    .card .row{margin-top:.4rem;padding-top:.4rem;}
+    .deliverable{margin-top:.4rem;padding:.5rem .8rem;}
+    .foot{margin-top:auto;padding-top:.6rem;}
   }
 </style>
 </head>
 <body>
+<div class="grid-bg"></div>
 <svg class="nodes" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice">
   <g stroke="rgba(37,131,231,.5)" stroke-width="1" fill="none">
     <line x1="980" y1="90" x2="1120" y2="190"/><line x1="1120" y1="190" x2="1040" y2="330"/>
@@ -166,14 +198,20 @@
   <div class="top">
     <div class="logos">
       <img class="zircon-mark" src="zircon-logo.png" alt="ZirconTech">
-      <img class="aws-partner-mark" src="aws-partner-logo-white.webp" alt="AWS Advanced Tier Services Partner">
+      <div class="aws-lockup"><img src="aws-partner-logo-white.webp" alt="AWS Advanced Tier Services Partner"></div>
     </div>
     <div class="tag">AWS Advanced Tier <b>Partner</b></div>
   </div>
 
   <div class="eyebrow">Cómo trabajamos</div>
-  <h1 class="title">El ciclo TRACE</h1>
+  <h1 class="title">El ciclo <em>TRACE</em></h1>
   <p class="lede">Cada decisión técnica, trazable desde el objetivo de negocio hasta el resultado medido. No inventamos etapas nuevas: anclamos en AWS Well-Architected, AWS Cloud Adoption Framework, FinOps y Working Backwards, y agregamos lo que ninguna consultora de nuestro tamaño hace explícito, <b>que el resultado final se puede trazar, paso a paso, hasta la decisión de negocio que lo originó.</b></p>
+
+  <div class="metrics">
+    <div class="m"><b>5 etapas</b><span>Target → Evolve</span></div>
+    <div class="m"><b>5 gates</b><span>Criterios de salida</span></div>
+    <div class="m"><b>1 métrica</b><span>Objetivo vs. resultado</span></div>
+  </div>
 
   <div class="timeline">
 
@@ -245,7 +283,7 @@
 
   <div class="foot">
     <img class="foot-logo" src="zircon-logo.png" alt="ZirconTech">
-    <span class="partner"><b>ZirconTech</b> · AWS Advanced Tier Services Partner</span>
+    <div class="tag">zircon.tech</div>
   </div>
 
 </div>
