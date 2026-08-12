@@ -1,9 +1,14 @@
+---
+hide:
+  - toc
+---
+
 # El ciclo TRACE
 
 Cinco etapas, cada una con un entregable concreto y un criterio de salida: no seguimos a la próxima etapa sin cumplirlo.
 
 ```mermaid
-flowchart TB
+flowchart LR
     classDef stage fill:#0C2444,stroke:#1767BF,color:#E8EEF5,stroke-width:1px
 
     T("T · Target<br/><small>caso de uso + KPI + línea base</small>"):::stage

@@ -1,9 +1,14 @@
+---
+hide:
+  - toc
+---
+
 # The TRACE cycle
 
 Five stages, each with a concrete deliverable and an exit criterion: we don't move to the next stage until it's met.
 
 ```mermaid
-flowchart TB
+flowchart LR
     classDef stage fill:#0C2444,stroke:#1767BF,color:#E8EEF5,stroke-width:1px
 
     T("T · Target<br/><small>use case + KPI + baseline</small>"):::stage
