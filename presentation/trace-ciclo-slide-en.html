@@ -26,13 +26,13 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%}
   body{background:var(--navy);color:var(--ink);font-family:'Inter',system-ui,sans-serif;overflow:hidden;-webkit-font-smoothing:antialiased;}
-  h1,h2,h3,.display{font-family:'Space Grotesk','Inter',sans-serif;letter-spacing:-.01em;}
+  h1,h2,h3,h4,.display{font-family:'Space Grotesk','Inter',sans-serif;letter-spacing:-.01em;}
 
   /* ---------- Deck & slides ---------- */
   .deck{position:fixed;inset:0;}
   .slide{
     position:absolute;inset:0;display:flex;flex-direction:column;
-    padding:37px 77px 62px;
+    padding:34px 72px 66px;
     opacity:0;visibility:hidden;transform:translateY(12px);
     transition:opacity .5s ease,transform .5s ease,visibility .5s;
     background:
@@ -41,161 +41,192 @@
       linear-gradient(180deg,var(--navy) 0%,var(--navy-2) 100%);
   }
   .slide.active{opacity:1;visibility:visible;transform:none;z-index:2;}
+  .grid-bg{
+    position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background-image:linear-gradient(rgba(37,131,231,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(37,131,231,.06) 1px,transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(120% 90% at 70% 0%,#000 10%,transparent 70%);
+    mask-image:radial-gradient(120% 90% at 70% 0%,#000 10%,transparent 70%);
+  }
   .nodes{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;}
   .slide>*{position:relative;z-index:1;}
+  .slide>.grid-bg,.slide>.nodes{position:absolute;z-index:0;}
+
 
   .eyebrow{
-    font-family:'Space Grotesk';font-weight:600;font-size:.82rem;
+    font-family:'Space Grotesk';font-weight:600;font-size:.8rem;
     letter-spacing:.22em;text-transform:uppercase;color:var(--teal);
-    display:flex;align-items:center;gap:.7rem;margin-bottom:1rem;
+    display:flex;align-items:center;gap:.7rem;margin-bottom:.65rem;
   }
   .eyebrow::before{content:"";width:26px;height:2px;background:var(--teal);display:inline-block;border-radius:2px;}
   .headline{font-weight:600;line-height:1.06;font-size:2.4rem;max-width:26ch;}
-  .subhead{color:var(--ink-2);font-size:1.02rem;line-height:1.45;margin-top:.7rem;max-width:62ch;font-weight:400;}
-  .footer{position:absolute;left:77px;right:77px;bottom:19px;z-index:3;display:flex;align-items:center;justify-content:space-between;font-size:.8rem;color:var(--ink-3);}
+  .subhead{color:var(--ink-2);font-size:1rem;line-height:1.45;margin-top:.6rem;max-width:64ch;font-weight:400;}
+  .footer{position:absolute;left:72px;right:72px;bottom:20px;z-index:3;display:flex;align-items:center;justify-content:space-between;font-size:.78rem;color:var(--ink-3);}
   .footer-logo{height:18px;width:auto;display:block;opacity:.72;}
-  .aws-partner-mark{height:30px;width:auto;display:block;opacity:.85;}
+  .footer .tag{font-family:'Space Grotesk';letter-spacing:.14em;text-transform:uppercase;font-size:.66rem;}
+
+  /* ---------- AWS lockup (higher contrast) ---------- */
+  .aws-lockup{
+    display:inline-flex;align-items:center;gap:.75rem;
+    background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,153,0,.45);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.10), 0 8px 22px -14px rgba(255,153,0,.6);
+    border-radius:12px;padding:.5rem .85rem;
+  }
+  .aws-lockup img{height:32px;width:auto;display:block;filter:brightness(1.12) saturate(1.15);}
   .zircon-mark{height:30px;width:auto;display:block;}
 
   /* ---------- Cover ---------- */
-  .cover{justify-content:center;}
-  .cover-logos{position:absolute;top:37px;left:77px;z-index:3;display:flex;align-items:center;gap:1.2rem;}
+  .cover{justify-content:space-between;}
+  .cover-top{display:flex;align-items:center;justify-content:space-between;gap:1.2rem;}
+  .cover-body{flex:1;display:grid;grid-template-columns:1.1fr .9fr;gap:3vw;align-items:start;min-height:0;overflow:hidden;padding-top:1.4rem;}
+  .cover-left{display:flex;flex-direction:column;justify-content:center;gap:.2rem;min-height:0;}
+  .cover h1{font-size:4.8rem;font-weight:700;line-height:1;}
+  .cover h1 em{font-style:normal;background:linear-gradient(180deg,var(--cyan),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .cover .sub{color:var(--ink-2);font-size:1.18rem;margin-top:1rem;max-width:44ch;line-height:1.5;}
   .cover .badge{
-    margin-top:1.4rem;display:inline-flex;align-items:center;gap:.6rem;width:fit-content;
+    margin-top:1rem;display:inline-flex;align-items:center;gap:.6rem;width:fit-content;
     background:rgba(37,131,231,.10);border:1px solid var(--line);border-radius:999px;
-    padding:.55rem 1.1rem;color:var(--cyan);font-size:.85rem;font-family:'Space Grotesk';font-weight:500;
+    padding:.5rem 1.05rem;color:var(--cyan);font-size:.82rem;font-family:'Space Grotesk';font-weight:500;
   }
-  .cover h1{font-size:4.2rem;font-weight:700;line-height:1.02;}
-  .cover .sub{color:var(--ink-2);font-size:1.3rem;margin-top:1.3rem;max-width:40ch;font-weight:400;}
+  .cover-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-top:1.2rem;}
+  .cover-metrics .m{
+    display:flex;flex-direction:column;gap:.2rem;
+    background:rgba(37,131,231,.06);border:1px solid rgba(255,255,255,.07);
+    border-radius:12px;padding:.9rem 1rem;
+  }
+  .cover-metrics .m b{font-family:'Space Grotesk';font-size:1.5rem;color:var(--ink);font-weight:600;line-height:1;}
+  .cover-metrics .m span{font-size:.7rem;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase;font-family:'Space Grotesk';}
+  .cover-ring{width:100%;max-width:420px;justify-self:center;align-self:center;}
+  .cover-strip{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:.55rem;
+  }
+  .cover-strip .c{
+    background:var(--panel-2);border:1px solid rgba(255,255,255,.06);border-top:3px solid var(--teal);
+    border-radius:12px;padding:.75rem .85rem;display:flex;flex-direction:column;gap:.15rem;
+  }
+  .cover-strip .c i{font-style:normal;font-family:'Space Grotesk';font-weight:700;color:var(--teal);font-size:.95rem;}
+  .cover-strip .c b{font-family:'Space Grotesk';font-weight:600;font-size:.98rem;}
+  .cover-strip .c span{color:var(--ink-3);font-size:.74rem;line-height:1.3;}
 
-  .cover-anchors{display:flex;gap:.6rem;margin-top:1.1rem;flex-wrap:wrap;}
-  .cover-anchors span{
-    font-family:'Space Grotesk';font-size:.76rem;font-weight:500;color:var(--ink-3);
-    border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:.35rem .85rem;
-  }
 
-  .cover-cycle{position:absolute;right:77px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:.9rem;}
-  .cover-cycle .ring{position:relative;width:280px;height:280px;}
-  .cover-cycle .node{
-    position:absolute;width:56px;height:56px;border-radius:50%;
-    background:var(--panel-2);border:1.5px solid var(--teal);
-    display:flex;align-items:center;justify-content:center;
-    font-family:'Space Grotesk';font-weight:700;font-size:1.15rem;color:var(--cyan);
-    box-shadow:0 0 0 8px rgba(6,19,38,.6);
-  }
-  .cover-cycle .hub{
-    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-    font-family:'Space Grotesk';font-weight:700;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--ink-3);text-align:center;line-height:1.4;
-  }
-  .cover-cycle .caption{font-family:'Space Grotesk';font-size:.78rem;color:var(--ink-3);letter-spacing:.04em;}
 
-  /* ---------- Mini stepper "you are here" used on stage detail slides ---------- */
-  .stage-mini{margin-top:auto;padding-top:.9rem;display:flex;align-items:center;gap:.45rem;}
-  .stage-mini .dot{
-    width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-    font-family:'Space Grotesk';font-weight:700;font-size:.68rem;
-    background:var(--panel-2);border:1px solid rgba(255,255,255,.08);color:var(--ink-3);
-  }
-  .stage-mini .dot.on{background:var(--teal);border-color:var(--cyan);color:var(--ink);}
-  .stage-mini .bar{flex:1;height:1px;background:rgba(255,255,255,.08);}
-
-  /* ---------- TRACE cycle overview (5 nodes + arrows) ---------- */
-  .trace-row{display:flex;align-items:stretch;gap:.6rem;margin-top:1.3rem;flex:1;}
+  /* ---------- TRACE cycle overview ---------- */
+  .trace-row{display:flex;align-items:stretch;gap:.6rem;margin-top:1.1rem;flex:1;}
   .trace-node{
     flex:1;background:var(--panel-2);border:1px solid rgba(255,255,255,.06);border-radius:14px;
-    border-top:3px solid var(--teal);padding:.8rem .8rem;display:flex;flex-direction:column;gap:.4rem;min-width:0;
+    border-top:3px solid var(--teal);padding:.8rem;display:flex;flex-direction:column;gap:.35rem;min-width:0;
   }
   .trace-node .letter{
-    width:34px;height:34px;border-radius:9px;background:rgba(37,131,231,.12);border:1px solid var(--line);
-    display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-weight:700;color:var(--teal);font-size:1.05rem;
+    width:32px;height:32px;border-radius:9px;background:rgba(37,131,231,.12);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-weight:700;color:var(--teal);font-size:1rem;
   }
-  .trace-node h3{font-size:1.06rem;font-weight:600;margin-top:.15rem;}
-  .trace-node .foco{color:var(--ink-2);font-size:.82rem;line-height:1.35;}
-  .trace-node .divider{height:1px;background:rgba(255,255,255,.07);margin:.15rem 0;}
-  .trace-node .lbl{font-family:'Space Grotesk';font-weight:600;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);}
-  .trace-node .val{color:var(--ink);font-size:.8rem;line-height:1.35;margin-top:.15rem;}
-  .trace-node .gate{color:var(--cyan);font-size:.78rem;line-height:1.35;margin-top:auto;padding-top:.5rem;font-weight:500;}
-  .trace-arrow{display:flex;align-items:center;justify-content:center;color:var(--teal);flex-shrink:0;width:20px;}
-  .trace-arrow svg{width:20px;height:20px;}
+  .trace-node h3{font-size:1.02rem;font-weight:600;margin-top:.1rem;}
+  .trace-node .foco{color:var(--ink-2);font-size:.79rem;line-height:1.32;}
+  .trace-node .divider{height:1px;background:rgba(255,255,255,.07);margin:.1rem 0;}
+  .trace-node .lbl{font-family:'Space Grotesk';font-weight:600;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);}
+  .trace-node .val{color:var(--ink);font-size:.78rem;line-height:1.32;margin-top:.1rem;}
+  .trace-node .ej{
+    margin-top:.45rem;border-radius:9px;padding:.45rem .55rem;font-size:.73rem;line-height:1.3;color:var(--ink-2);
+    background:rgba(255,153,0,.07);border:1px solid rgba(255,153,0,.26);
+  }
+  .trace-node .ej b{color:var(--aws);font-family:'Space Grotesk';font-weight:600;display:block;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.15rem;}
+  .trace-node .gate{color:var(--cyan);font-size:.75rem;line-height:1.3;margin-top:auto;padding-top:.5rem;font-weight:500;}
+  .trace-arrow{display:flex;align-items:center;justify-content:center;color:var(--teal);flex-shrink:0;width:18px;opacity:.7;}
+  .trace-arrow svg{width:18px;height:18px;}
   .trace-loop{
-    margin-top:.65rem;display:flex;align-items:center;gap:.8rem;
+    margin-top:.6rem;display:flex;align-items:center;gap:.8rem;
     background:linear-gradient(90deg, rgba(37,131,231,.16), rgba(37,131,231,.04));
-    border:1px solid var(--line);border-radius:12px;padding:.6rem 1.1rem;
+    border:1px solid var(--line);border-radius:12px;padding:.55rem 1.1rem;
   }
   .trace-loop svg{width:22px;height:22px;stroke:var(--cyan);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
-  .trace-loop p{color:var(--ink);font-size:.95rem;line-height:1.4;}
+  .trace-loop p{color:var(--ink);font-size:.92rem;line-height:1.4;}
   .trace-loop b{color:var(--cyan);font-weight:600;}
 
-  /* ---------- Stage detail slides (T/R/A/C/E) ---------- */
+  /* ---------- Stage detail slides ---------- */
+  .stage-top{display:flex;align-items:flex-start;justify-content:space-between;gap:2rem;}
   .stage-head{display:flex;align-items:baseline;gap:1rem;}
   .stage-head .big-letter{
-    font-family:'Space Grotesk';font-weight:700;font-size:3.4rem;line-height:1;
+    font-family:'Space Grotesk';font-weight:700;font-size:3.2rem;line-height:1;
     background:linear-gradient(180deg,var(--cyan),var(--teal-dim));-webkit-background-clip:text;background-clip:text;color:transparent;
   }
-  .stage-title{font-size:2rem;font-weight:600;}
-  .stage-tag{color:var(--ink-2);font-size:1.02rem;margin-top:.5rem;max-width:80ch;line-height:1.4;}
+  .stage-title{font-size:1.9rem;font-weight:600;}
+  .stage-tag{color:var(--ink-2);font-size:.98rem;margin-top:.45rem;max-width:86ch;line-height:1.4;}
 
-  .stage-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:2.2vw;flex:1;align-items:stretch;margin-top:1.3rem;min-height:0;}
-  .stage-col{display:flex;flex-direction:column;gap:.85rem;min-height:0;}
-  .stage-block{border-radius:14px;padding:1rem 1.2rem;background:var(--panel-2);border:1px solid rgba(255,255,255,.06);border-left:3px solid var(--ink-3);}
-  .stage-block .label{font-family:'Space Grotesk';font-weight:600;letter-spacing:.04em;font-size:.8rem;margin-bottom:.4rem;text-transform:uppercase;color:var(--ink-2);}
-  .stage-block p{font-size:.92rem;line-height:1.45;color:var(--ink);}
+  /* TRACE progress */
+  .trace-progress{display:flex;align-items:center;gap:.4rem;flex-shrink:0;padding-top:.4rem;}
+  .trace-progress span{
+    width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+    font-family:'Space Grotesk';font-weight:700;font-size:.85rem;color:var(--ink-3);
+    background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);
+  }
+  .trace-progress span.done{color:var(--cyan);border-color:var(--line);}
+  .trace-progress span.on{color:#fff;background:linear-gradient(160deg,var(--teal),var(--teal-dim));border-color:var(--teal);box-shadow:0 6px 18px -8px var(--teal);}
+
+  .stage-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:1.6vw;flex:1;align-items:stretch;margin-top:1rem;min-height:0;}
+  .stage-col{display:flex;flex-direction:column;gap:.7rem;min-height:0;}
+  .stage-block{border-radius:14px;padding:.85rem 1.1rem;background:var(--panel-2);border:1px solid rgba(255,255,255,.06);border-left:3px solid var(--ink-3);}
+  .stage-block .label{font-family:'Space Grotesk';font-weight:600;letter-spacing:.04em;font-size:.76rem;margin-bottom:.35rem;text-transform:uppercase;color:var(--ink-2);}
+  .stage-block p{font-size:.89rem;line-height:1.42;color:var(--ink);}
   .stage-block.gate{border-left-color:var(--teal);background:linear-gradient(160deg,rgba(37,131,231,.14),rgba(37,131,231,.03));border-color:var(--line);}
   .stage-block.gate .label{color:var(--teal);}
   .stage-block.gate p{color:var(--cyan);font-weight:500;}
+  .stage-block.activities{flex:1;display:flex;flex-direction:column;}
+  .acts{display:flex;flex-direction:column;gap:.5rem;margin-top:.15rem;flex:1;justify-content:space-evenly;}
+  .acts li{list-style:none;display:flex;gap:.55rem;align-items:flex-start;font-size:.86rem;line-height:1.38;color:var(--ink);}
+  .acts svg{width:15px;height:15px;flex-shrink:0;margin-top:.16rem;stroke:var(--teal);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
 
   .example-card{
-    background:linear-gradient(160deg,rgba(255,153,0,.10),rgba(255,153,0,.02));
-    border:1px solid rgba(255,153,0,.28);border-radius:16px;padding:1.5rem 1.7rem;
+    background:linear-gradient(160deg,rgba(255,153,0,.11),rgba(255,153,0,.02));
+    border:1px solid rgba(255,153,0,.3);border-radius:16px;padding:1rem 1.25rem 1.1rem;
     display:flex;flex-direction:column;min-height:0;
   }
   .example-tag{
     display:inline-flex;align-items:center;gap:.5rem;width:fit-content;
-    font-family:'Space Grotesk';font-weight:600;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--aws);margin-bottom:1.1rem;
+    font-family:'Space Grotesk';font-weight:600;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--aws);margin-bottom:.75rem;background:rgba(255,153,0,.12);border:1px solid rgba(255,153,0,.35);
+    border-radius:999px;padding:.3rem .7rem;
   }
-  .example-tag svg{width:15px;height:15px;stroke:var(--aws);stroke-width:2;fill:none;}
-
-  .example-big{
-    font-family:'Space Grotesk';font-weight:700;font-size:4.4rem;line-height:.9;
-    background:linear-gradient(180deg,#FFC670,var(--aws));-webkit-background-clip:text;background-clip:text;color:transparent;
-  }
-  .example-big small{
-    display:block;font-size:.92rem;color:var(--ink-2);font-weight:500;margin-top:.55rem;
-    -webkit-text-fill-color:var(--ink-2);max-width:34ch;line-height:1.35;
-  }
-  .example-flag{
-    display:inline-flex;align-items:center;gap:.5rem;width:fit-content;
-    background:rgba(255,153,0,.14);border:1px solid rgba(255,153,0,.4);border-radius:10px;
-    padding:.7rem 1rem;font-family:'Space Grotesk';font-weight:600;font-size:1.15rem;color:#FFC670;
-  }
-  .example-flag small{display:block;font-family:'Inter';font-weight:400;font-size:.76rem;color:var(--ink-2);margin-top:.2rem;}
-
-  .example-divider{height:1px;background:rgba(255,153,0,.18);margin:1.1rem 0;}
-
-  .example-rows{display:flex;flex-direction:column;gap:.65rem;overflow:auto;}
-  .example-rows .row{display:flex;flex-direction:column;gap:.15rem;}
+  .example-tag svg{width:14px;height:14px;stroke:var(--aws);stroke-width:2;fill:none;}
+  .example-rows{display:flex;flex-direction:column;gap:.6rem;overflow:auto;flex:1;justify-content:space-evenly;}
+  .example-rows .row{display:grid;grid-template-columns:8.5rem 1fr;gap:.9rem;align-items:baseline;padding-bottom:.55rem;border-bottom:1px dashed rgba(255,153,0,.16);}
+  .example-rows .row:last-child{border-bottom:0;padding-bottom:0;}
   .example-rows dt{font-family:'Space Grotesk';font-weight:600;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);}
   .example-rows dd{font-size:.88rem;line-height:1.4;color:var(--ink);}
   .example-rows dd b{color:var(--cyan);font-weight:600;}
+  .example-foot{
+    margin-top:auto;padding-top:.8rem;display:flex;align-items:center;gap:.6rem;
+    font-size:.82rem;color:var(--ink-2);border-top:1px solid rgba(255,153,0,.18);
+  }
+  .example-foot .chip{
+    font-family:'Space Grotesk';font-weight:600;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--aws);border:1px solid rgba(255,153,0,.35);border-radius:6px;padding:.18rem .45rem;
+  }
 
   /* ---------- Closing ---------- */
-  .closing{flex:1;display:flex;flex-direction:column;justify-content:center;}
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2.2rem;}
-  .step{position:relative;background:var(--panel-2);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:1.6rem;display:flex;flex-direction:column;gap:.7rem;}
-  .step .n{font-family:'Space Grotesk';font-weight:700;color:var(--teal);font-size:1rem;}
-  .step h4{font-family:'Space Grotesk';font-weight:600;font-size:1.14rem;}
-  .step p{color:var(--ink-2);font-size:.9rem;line-height:1.4;}
-  .step .arr{position:absolute;right:-1.05rem;top:50%;transform:translateY(-50%);color:var(--teal);z-index:3;width:20px;height:20px;}
-  .step:last-child .arr{display:none;}
-  .close-lockup{margin-top:2.4rem;display:flex;align-items:center;gap:1.3rem;}
-  .close-cta{
-    margin-top:1.6rem;display:flex;align-items:center;gap:.6rem;
-    font-family:'Space Grotesk';font-size:.95rem;color:var(--ink-2);
+  .closing{flex:1;display:flex;flex-direction:column;justify-content:flex-start;padding-top:1.2rem;}
+  .steps{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem;}
+  .steps::before{
+    content:"";position:absolute;top:2.35rem;left:8%;right:8%;height:1px;
+    background:linear-gradient(90deg,transparent,var(--line),var(--line),transparent);
   }
-  .close-cta b{color:var(--cyan);font-weight:600;}
-  .close-cta svg{width:16px;height:16px;stroke:var(--teal);stroke-width:2;fill:none;flex-shrink:0;}
+  .step{position:relative;background:var(--panel-2);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:1.4rem 1.5rem;display:flex;flex-direction:column;gap:.55rem;}
+  .step .n{
+    width:2rem;height:2rem;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:'Space Grotesk';font-weight:700;font-size:.82rem;color:#fff;
+    background:linear-gradient(160deg,var(--teal),var(--teal-dim));box-shadow:0 6px 18px -8px var(--teal);
+  }
+  .step h4{font-weight:600;font-size:1.1rem;}
+  .step p{color:var(--ink-2);font-size:.88rem;line-height:1.42;}
+  .step .when{font-family:'Space Grotesk';font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-top:auto;padding-top:.6rem;}
+  .cta-bar{
+    margin-top:1.8rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;
+    background:linear-gradient(90deg,rgba(37,131,231,.16),rgba(37,131,231,.03));
+    border:1px solid var(--line);border-radius:14px;padding:1rem 1.3rem;
+  }
+  .cta-bar p{font-size:.95rem;color:var(--ink);}
+  .cta-bar p b{color:var(--cyan);font-weight:600;}
+  .cta-lockup{display:flex;align-items:center;gap:1rem;}
 
   /* ---------- Nav chrome ---------- */
   .nav{position:fixed;bottom:2.4vh;right:6vw;z-index:50;display:flex;align-items:center;gap:.5rem;}
@@ -224,53 +255,75 @@
 
 <!-- SLIDE 0 — COVER -->
 <section class="slide cover active">
+  <div class="grid-bg"></div>
   <svg class="nodes" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice">
     <g stroke="rgba(37,131,231,.5)" stroke-width="1" fill="none">
-      <line x1="980" y1="120" x2="1120" y2="220"/><line x1="1120" y1="220" x2="1040" y2="360"/>
-      <line x1="120" y1="560" x2="260" y2="620"/>
+      <line x1="980" y1="90" x2="1120" y2="180"/><line x1="120" y1="560" x2="260" y2="620"/>
     </g>
     <g fill="var(--teal)">
-      <circle cx="980" cy="120" r="4"/><circle cx="1120" cy="220" r="5"/><circle cx="1040" cy="360" r="4"/>
+      <circle cx="980" cy="90" r="4"/><circle cx="1120" cy="180" r="5"/>
       <circle cx="120" cy="560" r="4"/><circle cx="260" cy="620" r="5"/>
     </g>
   </svg>
-  <div class="cover-logos">
+
+  <div class="cover-top">
     <img class="zircon-mark" src="zircon-logo.png" alt="ZirconTech">
-    <img class="aws-partner-mark" src="aws-partner-logo-white.webp" alt="AWS Advanced Tier Services Partner">
+    <div class="aws-lockup">
+      <img src="aws-partner-logo-white.webp" alt="AWS Advanced Tier Services Partner">
+    </div>
   </div>
-  <h1 class="display">The TRACE cycle</h1>
-  <p class="sub">How we work: every technical decision, traceable from the business objective to the measured result.</p>
-  <div class="badge">A proprietary methodology, anchored in recognized industry standards</div>
-  <div class="cover-anchors">
-    <span>AWS Well-Architected</span><span>AWS CAF</span><span>FinOps Foundation</span><span>Working Backwards</span>
-  </div>
-  <div class="cover-cycle">
-    <svg width="280" height="280" viewBox="0 0 280 280">
-      <polyline points="140,35 240,108 202,225 78,225 40,108" fill="none" stroke="rgba(37,131,231,.4)" stroke-width="1.5"/>
-      <path d="M40,108 A128,128 0 0,1 140,35" fill="none" stroke="#75B9FF" stroke-width="1.5" stroke-dasharray="4 4"/>
-      <g font-family="'Space Grotesk',sans-serif" font-weight="700" font-size="17" text-anchor="middle">
-        <circle cx="140" cy="35" r="25" fill="#0C2444" stroke="#2583E7" stroke-width="1.5"/>
-        <text x="140" y="41" fill="#75B9FF">T</text>
-        <circle cx="240" cy="108" r="25" fill="#0C2444" stroke="#2583E7" stroke-width="1.5"/>
-        <text x="240" y="114" fill="#75B9FF">R</text>
-        <circle cx="202" cy="225" r="25" fill="#0C2444" stroke="#2583E7" stroke-width="1.5"/>
-        <text x="202" y="231" fill="#75B9FF">A</text>
-        <circle cx="78" cy="225" r="25" fill="#0C2444" stroke="#2583E7" stroke-width="1.5"/>
-        <text x="78" y="231" fill="#75B9FF">C</text>
-        <circle cx="40" cy="108" r="25" fill="#0C2444" stroke="#2583E7" stroke-width="1.5"/>
-        <text x="40" y="114" fill="#75B9FF">E</text>
+
+  <div class="cover-body">
+    <div class="cover-left">
+      <div class="eyebrow">ZirconTech Methodology</div>
+      <h1 class="display">The <em>TRACE</em> cycle</h1>
+      <p class="sub">How we work: every technical decision, traceable from the business objective to the measured result.</p>
+      <div class="badge">Anchored in AWS Well-Architected, CAF, and FinOps</div>
+      <div class="cover-metrics">
+        <div class="m"><b>5 stages</b><span>Target → Evolve</span></div>
+        <div class="m"><b>5 gates</b><span>Exit criteria</span></div>
+        <div class="m"><b>1 metric</b><span>Objective vs. result</span></div>
+      </div>
+    </div>
+
+    <svg class="cover-ring" viewBox="0 0 400 400" fill="none">
+      <defs>
+        <linearGradient id="ringg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#75B9FF"/><stop offset="100%" stop-color="#1767BF"/>
+        </linearGradient>
+      </defs>
+      <circle cx="200" cy="200" r="150" stroke="rgba(37,131,231,.18)" stroke-width="26"/>
+      <circle cx="200" cy="200" r="150" stroke="url(#ringg)" stroke-width="2.5" stroke-dasharray="14 10" opacity=".85"/>
+      <circle cx="200" cy="200" r="104" stroke="rgba(37,131,231,.15)" stroke-width="1"/>
+      <g font-family="Space Grotesk" font-weight="700" font-size="20" fill="#75B9FF" text-anchor="middle">
+        <g><circle cx="200" cy="50" r="26" fill="#0C2444" stroke="#2583E7" stroke-width="1.5"/><text x="200" y="57">T</text></g>
+        <g><circle cx="342" cy="153" r="26" fill="#0C2444" stroke="#2583E7" stroke-width="1.5"/><text x="342" y="160">R</text></g>
+        <g><circle cx="288" cy="321" r="26" fill="#0C2444" stroke="#2583E7" stroke-width="1.5"/><text x="288" y="328">A</text></g>
+        <g><circle cx="112" cy="321" r="26" fill="#0C2444" stroke="#2583E7" stroke-width="1.5"/><text x="112" y="328">C</text></g>
+        <g><circle cx="58" cy="153" r="26" fill="#0C2444" stroke="#2583E7" stroke-width="1.5"/><text x="58" y="160">E</text></g>
       </g>
+      <text x="200" y="192" text-anchor="middle" font-family="Space Grotesk" font-size="15" fill="#5B6E88" letter-spacing="3">CYCLE</text>
+      <text x="200" y="228" text-anchor="middle" font-family="Space Grotesk" font-weight="700" font-size="34" fill="#E8EEF5">TRACE</text>
     </svg>
-    <div class="caption">Target → Read → Architect → Craft → Evolve</div>
   </div>
-  <div class="footer"><img class="footer-logo" src="zircon-logo.png" alt="ZirconTech"></div>
+
+  <div class="cover-strip">
+    <div class="c"><i>T</i><b>Target</b><span>Measurable objective</span></div>
+    <div class="c"><i>R</i><b>Read</b><span>Assessment</span></div>
+    <div class="c"><i>A</i><b>Architect</b><span>Design and cost</span></div>
+    <div class="c"><i>C</i><b>Craft</b><span>PoC with evidence</span></div>
+    <div class="c"><i>E</i><b>Evolve</b><span>Production and improvement</span></div>
+  </div>
+
+  <div class="footer"><img class="footer-logo" src="zircon-logo.png" alt="ZirconTech"><span class="tag">zircon.tech</span></div>
 </section>
 
 <!-- SLIDE 1 — OVERVIEW -->
 <section class="slide">
+  <div class="grid-bg"></div>
   <div class="eyebrow">The full picture</div>
   <h1 class="headline">Five stages, a cycle that closes</h1>
-  <p class="subhead">Each stage has a concrete deliverable and an exit criterion — we don't move to the next one until it's met. The next slides walk through each stage in detail, with an example of how it plays out in practice.</p>
+  <p class="subhead">Each stage has a concrete deliverable and an exit criterion — we don't move to the next one until it's met. We follow the same illustrative case (Andina Retail) throughout the whole cycle.</p>
   <div class="trace-row">
     <div class="trace-node">
       <div class="letter">T</div>
@@ -279,16 +332,18 @@
       <div class="divider"></div>
       <div class="lbl">Deliverable</div>
       <div class="val">Prioritized use cases + KPI + baseline</div>
+      <div class="ej"><b>Example</b>WhatsApp agent for order status. KPI: % resolved without a human (0% today).</div>
       <div class="gate">Gate: a use case with owner, KPI, and estimated value</div>
     </div>
     <div class="trace-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
     <div class="trace-node">
       <div class="letter">R</div>
       <h3>Read</h3>
-      <p class="foco">X-ray the data, architecture, risks, and feasibility.</p>
+      <p class="foco">X-ray data, architecture, risks, and feasibility.</p>
       <div class="divider"></div>
       <div class="lbl">Deliverable</div>
       <div class="val">Assessment report with gaps by perspective</div>
+      <div class="ej"><b>Example</b>Legacy ERP with no API: High gap in Platform. Data needs anonymizing (Law 21.719).</div>
       <div class="gate">Gate: feasibility confirmed (data + architecture + compliance)</div>
     </div>
     <div class="trace-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
@@ -298,7 +353,8 @@
       <p class="foco">Design the target solution, the roadmap, and the cost.</p>
       <div class="divider"></div>
       <div class="lbl">Deliverable</div>
-      <div class="val">Architecture + roadmap + cost estimate + PoC plan</div>
+      <div class="val">Architecture + roadmap + costs + PoC plan</div>
+      <div class="ej"><b>Example</b>Bedrock + Lambda + DynamoDB. ~USD 800/month. Success criterion: ≥70%.</div>
       <div class="gate">Gate: cost approved, PoC scope agreed</div>
     </div>
     <div class="trace-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
@@ -309,6 +365,7 @@
       <div class="divider"></div>
       <div class="lbl">Deliverable</div>
       <div class="val">Working PoC + evidence vs. success criteria</div>
+      <div class="ej"><b>Example</b>3 sprints, 200 conversations tested: 74% resolved. Decision: go.</div>
       <div class="gate">Gate: documented go/no-go decision</div>
     </div>
     <div class="trace-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
@@ -319,6 +376,7 @@
       <div class="divider"></div>
       <div class="lbl">Deliverable</div>
       <div class="val">Traceability artifact: objective vs. measured result</div>
+      <div class="ej"><b>Example</b>71% in production at 2 months: +71 points vs. 0% baseline.</div>
       <div class="gate">Gate: positive delta or a documented action plan</div>
     </div>
   </div>
@@ -326,196 +384,233 @@
     <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
     <p><b>Evolve closes the loop</b> against the objective defined in Target: the measured result is always compared against the original baseline. That traceability is ZirconTrace's signature.</p>
   </div>
-  <div class="footer"><img class="footer-logo" src="zircon-logo.png" alt="ZirconTech"></div>
+  <div class="footer"><img class="footer-logo" src="zircon-logo.png" alt="ZirconTech"><span class="tag">The TRACE cycle</span></div>
 </section>
 
 <!-- SLIDE 2 — T · TARGET -->
 <section class="slide">
+  <div class="grid-bg"></div>
   <div class="eyebrow">Stage 1 of 5</div>
-  <div class="stage-head"><span class="big-letter">T</span><h2 class="stage-title">Target</h2></div>
-  <p class="stage-tag">We translate the business problem into a measurable outcome: prioritized use cases, each with an owner, a KPI, and a baseline.</p>
+  <div class="stage-top">
+    <div>
+      <div class="stage-head"><span class="big-letter">T</span><h2 class="stage-title">Target</h2></div>
+      <p class="stage-tag">We translate the business problem into a measurable outcome: prioritized use cases, with an owner, KPI, and baseline.</p>
+    </div>
+    <div class="trace-progress"><span class="on">T</span><span>R</span><span>A</span><span>C</span><span>E</span></div>
+  </div>
   <div class="stage-grid">
     <div class="stage-col">
       <div class="stage-block">
         <div class="label">You get</div>
         <p>A short document, no technical jargon: the central problem, prioritized use cases (owner, KPI, baseline, estimated value), and the service package that best frames the starting point.</p>
       </div>
+      <div class="stage-block activities">
+        <div class="label">What we do</div>
+        <ul class="acts">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Interviews with business and process owners.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Use-case prioritization by value and effort.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>KPI definition and baseline measurement.</li>
+        </ul>
+      </div>
       <div class="stage-block gate">
         <div class="label">Gate</div>
-        <p>There's at least one use case with an owner, a KPI, and an estimated value — confirmed in writing before Read starts.</p>
-      </div>
-      <div class="stage-mini">
-        <div class="dot on">T</div><div class="bar"></div>
-        <div class="dot">R</div><div class="bar"></div>
-        <div class="dot">A</div><div class="bar"></div>
-        <div class="dot">C</div><div class="bar"></div>
-        <div class="dot">E</div>
+        <p>There's at least one use case with owner, KPI, and estimated value — confirmed in writing before Read starts.</p>
       </div>
     </div>
     <div class="example-card">
       <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Illustrative example (fictional) · Andina Retail</div>
-      <div class="example-big">0%<small>of inquiries resolved without a human — 100% manual today</small></div>
-      <div class="example-divider"></div>
       <div class="example-rows">
         <div class="row"><dt>Problem</dt><dd>The customer support team is getting <b>40% more</b> WhatsApp inquiries than last year; average response time is 6 hours.</dd></div>
-        <div class="row"><dt>Use case</dt><dd>A WhatsApp support agent for order status and return inquiries. Owner: Head of Customer Experience.</dd></div>
-        <div class="row"><dt>Estimated value</dt><dd>Reduce the support team's workload by 25%.</dd></div>
+        <div class="row"><dt>Use case</dt><dd>A WhatsApp support agent for order status and return inquiries.</dd></div>
+        <div class="row"><dt>Owner</dt><dd>Head of Customer Experience.</dd></div>
+        <div class="row"><dt>KPI / baseline</dt><dd>% of inquiries resolved without human intervention — baseline <b>0%</b> (100% human today).</dd></div>
+        <div class="row"><dt>Estimated value</dt><dd>Reduce the CX team's workload by 25%.</dd></div>
       </div>
+      <div class="example-foot"><span class="chip">Output</span> Use case approved, ready for the Read assessment.</div>
     </div>
   </div>
-  <div class="footer"><img class="footer-logo" src="zircon-logo.png" alt="ZirconTech"></div>
+  <div class="footer"><img class="footer-logo" src="zircon-logo.png" alt="ZirconTech"><span class="tag">Target</span></div>
 </section>
 
 <!-- SLIDE 3 — R · READ -->
 <section class="slide">
+  <div class="grid-bg"></div>
   <div class="eyebrow">Stage 2 of 5</div>
-  <div class="stage-head"><span class="big-letter">R</span><h2 class="stage-title">Read</h2></div>
-  <p class="stage-tag">We x-ray the current state — data, architecture, risks, feasibility — before designing anything.</p>
+  <div class="stage-top">
+    <div>
+      <div class="stage-head"><span class="big-letter">R</span><h2 class="stage-title">Read</h2></div>
+      <p class="stage-tag">We x-ray the current state — data, architecture, risks, feasibility — before designing anything.</p>
+    </div>
+    <div class="trace-progress"><span class="done">T</span><span class="on">R</span><span>A</span><span>C</span><span>E</span></div>
+  </div>
   <div class="stage-grid">
     <div class="stage-col">
       <div class="stage-block">
         <div class="label">You get</div>
-        <p>Gaps by CAF perspective, a review against the 6 pillars of Well-Architected, the state of your data, and your exposure under Chile's Law 21.719 if you operate there.</p>
+        <p>Gaps by CAF perspective, a review against the 6 pillars of Well-Architected, the state of your data, and your exposure under Law 21.719 if you operate in Chile.</p>
+      </div>
+      <div class="stage-block activities">
+        <div class="label">What we do</div>
+        <ul class="acts">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Inventory of data sources and quality.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>CAF Assessment + Well-Architected Review.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Map of regulatory and security risks.</li>
+        </ul>
       </div>
       <div class="stage-block gate">
         <div class="label">Gate</div>
         <p>Feasibility confirmed — data, architecture, and compliance — before moving to Architect.</p>
       </div>
-      <div class="stage-mini">
-        <div class="dot">T</div><div class="bar"></div>
-        <div class="dot on">R</div><div class="bar"></div>
-        <div class="dot">A</div><div class="bar"></div>
-        <div class="dot">C</div><div class="bar"></div>
-        <div class="dot">E</div>
-      </div>
     </div>
     <div class="example-card">
       <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Illustrative example (fictional) · Andina Retail</div>
-      <div class="example-flag">High-severity gap · Platform (CAF)<small>Legacy ERP with no API to expose order data</small></div>
-      <div class="example-divider"></div>
       <div class="example-rows">
-        <div class="row"><dt>Assessment scope</dt><dd>Review of 3 core systems (ERP, e-commerce, CRM) and interviews with 4 business and IT stakeholders.</dd></div>
-        <div class="row"><dt>Compliance (Law 21.719)</dt><dd>Andina processes customer data in Chile: purchase history needs to be anonymized before it's used to train the agent.</dd></div>
+        <div class="row"><dt>Technical finding</dt><dd>Order data lives in a legacy ERP with no API — a <b>High</b> severity gap in the CAF Platform perspective.</dd></div>
+        <div class="row"><dt>Data</dt><dd>18 months of historical conversations available, enough to evaluate the agent.</dd></div>
+        <div class="row"><dt>Compliance</dt><dd>Law 21.719: purchase history needs to be <b>anonymized</b> before it's used to train the agent.</dd></div>
         <div class="row"><dt>Conclusion</dt><dd>Feasibility confirmed, <b>conditional on</b> resolving ERP data access before Architect.</dd></div>
       </div>
+      <div class="example-foot"><span class="chip">Output</span> Assessment signed off with 1 open condition and its owner.</div>
     </div>
   </div>
-  <div class="footer"><img class="footer-logo" src="zircon-logo.png" alt="ZirconTech"></div>
+  <div class="footer"><img class="footer-logo" src="zircon-logo.png" alt="ZirconTech"><span class="tag">Read</span></div>
 </section>
 
 <!-- SLIDE 4 — A · ARCHITECT -->
 <section class="slide">
+  <div class="grid-bg"></div>
   <div class="eyebrow">Stage 3 of 5</div>
-  <div class="stage-head"><span class="big-letter">A</span><h2 class="stage-title">Architect</h2></div>
-  <p class="stage-tag">We design the target solution, the roadmap, and the cost — before we build, not after.</p>
+  <div class="stage-top">
+    <div>
+      <div class="stage-head"><span class="big-letter">A</span><h2 class="stage-title">Architect</h2></div>
+      <p class="stage-tag">We design the target solution, the roadmap, and the cost — before we build, not after.</p>
+    </div>
+    <div class="trace-progress"><span class="done">T</span><span class="done">R</span><span class="on">A</span><span>C</span><span>E</span></div>
+  </div>
   <div class="stage-grid">
     <div class="stage-col">
       <div class="stage-block">
         <div class="label">You get</div>
-        <p>An architecture diagram, a checklist against the 6 pillars of Well-Architected, a phased roadmap, month-by-month cost estimates, and the PoC's success criteria.</p>
+        <p>Architecture diagram, checklist against the 6 pillars of Well-Architected, phased roadmap, month-by-month cost estimate, and PoC success criteria.</p>
+      </div>
+      <div class="stage-block activities">
+        <div class="label">What we do</div>
+        <ul class="acts">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Target architecture design on AWS.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>FinOps cost estimate by phase.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Definition of the PoC's success criteria.</li>
+        </ul>
       </div>
       <div class="stage-block gate">
         <div class="label">Gate</div>
         <p>Estimated cost approved and PoC scope agreed, with measurable success criteria.</p>
       </div>
-      <div class="stage-mini">
-        <div class="dot">T</div><div class="bar"></div>
-        <div class="dot">R</div><div class="bar"></div>
-        <div class="dot on">A</div><div class="bar"></div>
-        <div class="dot">C</div><div class="bar"></div>
-        <div class="dot">E</div>
-      </div>
     </div>
     <div class="example-card">
       <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Illustrative example (fictional) · Andina Retail</div>
-      <div class="example-big">$800<small>estimated USD/month in infrastructure (sa-east-1 region)</small></div>
-      <div class="example-divider"></div>
       <div class="example-rows">
         <div class="row"><dt>Architecture</dt><dd>Amazon Bedrock (Claude) + Lambda + DynamoDB, integrated with the WhatsApp Business API.</dd></div>
-        <div class="row"><dt>Roadmap</dt><dd>Phase 1 (PoC): WhatsApp agent. Phase 2 (future, not yet estimated): extend to automated returns.</dd></div>
-        <div class="row"><dt>PoC success criterion</dt><dd>≥70% of inquiries resolved without escalating to a human, measured across 200 real conversations.</dd></div>
+        <div class="row"><dt>Data access</dt><dd>Integration layer over the legacy ERP to expose order status as an internal API.</dd></div>
+        <div class="row"><dt>Estimated cost</dt><dd>~<b>USD 800/month</b> in infrastructure (sa-east-1 region).</dd></div>
+        <div class="row"><dt>Success criterion</dt><dd>≥70% of inquiries resolved without escalating to a human, measured across 200 real conversations.</dd></div>
       </div>
+      <div class="example-foot"><span class="chip">Output</span> 3-sprint PoC approved with budget and criteria signed off.</div>
     </div>
   </div>
-  <div class="footer"><img class="footer-logo" src="zircon-logo.png" alt="ZirconTech"></div>
+  <div class="footer"><img class="footer-logo" src="zircon-logo.png" alt="ZirconTech"><span class="tag">Architect</span></div>
 </section>
 
 <!-- SLIDE 5 — C · CRAFT -->
 <section class="slide">
+  <div class="grid-bg"></div>
   <div class="eyebrow">Stage 4 of 5</div>
-  <div class="stage-head"><span class="big-letter">C</span><h2 class="stage-title">Craft</h2></div>
-  <p class="stage-tag">We build iteratively and test the hypothesis against the success criteria defined in Architect.</p>
+  <div class="stage-top">
+    <div>
+      <div class="stage-head"><span class="big-letter">C</span><h2 class="stage-title">Craft</h2></div>
+      <p class="stage-tag">We build iteratively and test the hypothesis against the success criteria defined in Architect.</p>
+    </div>
+    <div class="trace-progress"><span class="done">T</span><span class="done">R</span><span class="done">A</span><span class="on">C</span><span>E</span></div>
+  </div>
   <div class="stage-grid">
     <div class="stage-col">
       <div class="stage-block">
         <div class="label">You get</div>
         <p>Testing evidence per environment, each success criterion with its result, a closing demo, and an explicit, documented go/no-go decision.</p>
       </div>
+      <div class="stage-block activities">
+        <div class="label">What we do</div>
+        <ul class="acts">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Short sprints with a demo at the end of each one.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Agent evaluation against real data.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Result logged per success criterion.</li>
+        </ul>
+      </div>
       <div class="stage-block gate">
         <div class="label">Gate</div>
-        <p>Every success criterion has a recorded result, and there's a documented continuity decision.</p>
-      </div>
-      <div class="stage-mini">
-        <div class="dot">T</div><div class="bar"></div>
-        <div class="dot">R</div><div class="bar"></div>
-        <div class="dot">A</div><div class="bar"></div>
-        <div class="dot on">C</div><div class="bar"></div>
-        <div class="dot">E</div>
+        <p>Every success criterion has a recorded result and there's a documented continuity decision.</p>
       </div>
     </div>
     <div class="example-card">
       <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Illustrative example (fictional) · Andina Retail</div>
-      <div class="example-big">74%<small>of inquiries resolved without human intervention — beats the 70% target</small></div>
-      <div class="example-divider"></div>
       <div class="example-rows">
-        <div class="row"><dt>Build</dt><dd>3 two-week sprints. The PoC was tested against 200 historical conversations and validated live with 20 real customers.</dd></div>
-        <div class="row"><dt>FinOps (Optimize)</dt><dd>The model was tuned to Claude to cut cost per conversation by 30% without lowering response quality.</dd></div>
+        <div class="row"><dt>Build</dt><dd>3 sprints. PoC tested against 200 historical conversations and validated live with 20 real customers.</dd></div>
+        <div class="row"><dt>Result</dt><dd><b>74%</b> of inquiries resolved without human intervention — beats the success criterion (70%).</dd></div>
+        <div class="row"><dt>Learning</dt><dd>Return inquiries need more context: they're left out of the initial scope.</dd></div>
         <div class="row"><dt>Decision</dt><dd><b>Go to production</b>, approved by the Head of Customer Experience.</dd></div>
       </div>
+      <div class="example-foot"><span class="chip">Output</span> Go/no-go decision documented, with evidence attached.</div>
     </div>
   </div>
-  <div class="footer"><img class="footer-logo" src="zircon-logo.png" alt="ZirconTech"></div>
+  <div class="footer"><img class="footer-logo" src="zircon-logo.png" alt="ZirconTech"><span class="tag">Craft</span></div>
 </section>
 
 <!-- SLIDE 6 — E · EVOLVE -->
 <section class="slide">
+  <div class="grid-bg"></div>
   <div class="eyebrow">Stage 5 of 5</div>
-  <div class="stage-head"><span class="big-letter">E</span><h2 class="stage-title">Evolve</h2></div>
-  <p class="stage-tag">Production, measuring results, and continuous improvement — this is where we close the loop against the objective defined in Target.</p>
+  <div class="stage-top">
+    <div>
+      <div class="stage-head"><span class="big-letter">E</span><h2 class="stage-title">Evolve</h2></div>
+      <p class="stage-tag">Production, measuring results, and continuous improvement — this is where we close the loop against the objective defined in Target.</p>
+    </div>
+    <div class="trace-progress"><span class="done">T</span><span class="done">R</span><span class="done">A</span><span class="done">C</span><span class="on">E</span></div>
+  </div>
   <div class="stage-grid">
     <div class="stage-col">
       <div class="stage-block">
         <div class="label">You get</div>
-        <p>The traceability artifact: the Target objective, the baseline, the KPI measured in production, and the delta. Cost dashboards, and an evolution plan.</p>
+        <p>The traceability artifact: Target's objective, baseline, KPI measured in production, and delta. Cost dashboards, and an evolution plan.</p>
+      </div>
+      <div class="stage-block activities">
+        <div class="label">What we do</div>
+        <ul class="acts">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Going live and KPI observability.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>FinOps review of real vs. estimated cost.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Opening the next cycle with a new Target.</li>
+        </ul>
       </div>
       <div class="stage-block gate">
         <div class="label">Gate</div>
-        <p>A positive delta, or if not, explained with an action plan — and at least one evolution item for the next period.</p>
-      </div>
-      <div class="stage-mini">
-        <div class="dot">T</div><div class="bar"></div>
-        <div class="dot">R</div><div class="bar"></div>
-        <div class="dot">A</div><div class="bar"></div>
-        <div class="dot">C</div><div class="bar"></div>
-        <div class="dot on">E</div>
+        <p>Positive delta, or if not, explained with an action plan — and at least one evolution item for the next period.</p>
       </div>
     </div>
     <div class="example-card">
       <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Illustrative example (fictional) · Andina Retail</div>
-      <div class="example-big">+71pts<small>vs. baseline, measured 2 months into production (71% vs. 0%)</small></div>
-      <div class="example-divider"></div>
       <div class="example-rows">
-        <div class="row"><dt>Reading the delta</dt><dd>Slightly below the PoC's peak (74%), explained by the wider variety of real-world inquiries in production.</dd></div>
-        <div class="row"><dt>Real cost</dt><dd>USD 740/month in infrastructure — 8% below the Architect estimate.</dd></div>
+        <div class="row"><dt>2 months live</dt><dd>Measured KPI: <b>71%</b> of inquiries resolved without intervention (0% baseline).</dd></div>
+        <div class="row"><dt>Delta</dt><dd><b>+71 points</b> vs. baseline — slightly below the PoC's peak (74%), explained by the wider variety of real-world inquiries.</dd></div>
+        <div class="row"><dt>Real cost</dt><dd>USD 740/month vs. the USD 800 estimated in Architect.</dd></div>
         <div class="row"><dt>Evolution plan</dt><dd>Add an email channel and open a new Target cycle for automated returns.</dd></div>
       </div>
+      <div class="example-foot"><span class="chip">Traceability</span> Target's objective → result measured in production.</div>
     </div>
   </div>
-  <div class="footer"><img class="footer-logo" src="zircon-logo.png" alt="ZirconTech"></div>
+  <div class="footer"><img class="footer-logo" src="zircon-logo.png" alt="ZirconTech"><span class="tag">Evolve</span></div>
 </section>
 
 <!-- SLIDE 7 — CLOSING -->
 <section class="slide">
+  <div class="grid-bg"></div>
   <div class="eyebrow">Next steps</div>
   <div class="closing">
     <h2 class="headline" style="max-width:22ch">Let's start your TRACE cycle</h2>
@@ -525,30 +620,30 @@
         <div class="n">01</div>
         <h4>Let's talk</h4>
         <p>A short meeting to understand your context and the problem you want to solve.</p>
-        <svg class="arr ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <div class="when">45 minutes</div>
       </div>
       <div class="step">
         <div class="n">02</div>
         <h4>Start with Target</h4>
-        <p>We leave with prioritized use cases, each with an owner, a KPI, and a baseline.</p>
-        <svg class="arr ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <p>We leave with prioritized use cases, each with an owner, KPI, and baseline.</p>
+        <div class="when">1 to 2 weeks</div>
       </div>
       <div class="step">
         <div class="n">03</div>
         <h4>Run the cycle</h4>
         <p>Read, Architect, Craft, and Evolve — with a quality gate at every stage.</p>
+        <div class="when">Ongoing cycle</div>
       </div>
     </div>
-    <div class="close-cta">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><path d="M2 6h20v12H2z"/></svg>
-      Write to us at <b>contact@zircon.tech</b> or visit <b>zircon.tech</b>
-    </div>
-    <div class="close-lockup">
-      <img class="zircon-mark" src="zircon-logo.png" alt="ZirconTech">
-      <img class="aws-partner-mark" src="aws-partner-logo-white.webp" alt="AWS Advanced Tier Services Partner">
+    <div class="cta-bar">
+      <p><b>Shall we start?</b> Write to us and let's schedule the first conversation.</p>
+      <div class="cta-lockup">
+        <img class="zircon-mark" src="zircon-logo.png" alt="ZirconTech">
+        <div class="aws-lockup"><img src="aws-partner-logo-white.webp" alt="AWS Advanced Tier Services Partner"></div>
+      </div>
     </div>
   </div>
-  <div class="footer"><img class="footer-logo" src="zircon-logo.png" alt="ZirconTech"></div>
+  <div class="footer"><img class="footer-logo" src="zircon-logo.png" alt="ZirconTech"><span class="tag">zircon.tech</span></div>
 </section>
 
 </div><!-- /deck -->
