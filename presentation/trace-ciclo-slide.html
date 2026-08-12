@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="es"><head>
+<html lang="es">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>El ciclo TRACE · ZirconTech</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --navy:#061326;
@@ -49,6 +50,8 @@
   }
   .nodes{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;}
   .slide>*{position:relative;z-index:1;}
+  .slide>.grid-bg,.slide>.nodes{position:absolute;z-index:0;}
+
 
   .eyebrow{
     font-family:'Space Grotesk';font-weight:600;font-size:.8rem;
@@ -74,32 +77,39 @@
   .zircon-mark{height:30px;width:auto;display:block;}
 
   /* ---------- Cover ---------- */
-  .cover{justify-content:flex-start;}
+  .cover{justify-content:space-between;}
   .cover-top{display:flex;align-items:center;justify-content:space-between;gap:1.2rem;}
-  .cover-body{flex:1;display:grid;grid-template-columns:1.15fr .85fr;gap:3vw;align-items:start;padding-top:1.4rem;}
-  .cover h1{font-size:4.6rem;font-weight:700;line-height:1;}
+  .cover-body{flex:1;display:grid;grid-template-columns:1.1fr .9fr;gap:3vw;align-items:start;min-height:0;overflow:hidden;padding-top:1.4rem;}
+  .cover-left{display:flex;flex-direction:column;justify-content:center;gap:.2rem;min-height:0;}
+  .cover h1{font-size:4.8rem;font-weight:700;line-height:1;}
   .cover h1 em{font-style:normal;background:linear-gradient(180deg,var(--cyan),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent;}
-  .cover .sub{color:var(--ink-2);font-size:1.18rem;margin-top:1.1rem;max-width:46ch;line-height:1.5;}
+  .cover .sub{color:var(--ink-2);font-size:1.18rem;margin-top:1rem;max-width:44ch;line-height:1.5;}
   .cover .badge{
-    margin-top:1.2rem;display:inline-flex;align-items:center;gap:.6rem;width:fit-content;
+    margin-top:1rem;display:inline-flex;align-items:center;gap:.6rem;width:fit-content;
     background:rgba(37,131,231,.10);border:1px solid var(--line);border-radius:999px;
     padding:.5rem 1.05rem;color:var(--cyan);font-size:.82rem;font-family:'Space Grotesk';font-weight:500;
   }
-  .cover-metrics{display:flex;gap:2.4rem;margin-top:1.8rem;}
-  .cover-metrics .m{display:flex;flex-direction:column;gap:.15rem;}
-  .cover-metrics .m b{font-family:'Space Grotesk';font-size:1.45rem;color:var(--ink);font-weight:600;}
-  .cover-metrics .m span{font-size:.78rem;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase;font-family:'Space Grotesk';}
-  .cover-ring{width:100%;max-width:440px;justify-self:center;}
+  .cover-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-top:1.2rem;}
+  .cover-metrics .m{
+    display:flex;flex-direction:column;gap:.2rem;
+    background:rgba(37,131,231,.06);border:1px solid rgba(255,255,255,.07);
+    border-radius:12px;padding:.9rem 1rem;
+  }
+  .cover-metrics .m b{font-family:'Space Grotesk';font-size:1.5rem;color:var(--ink);font-weight:600;line-height:1;}
+  .cover-metrics .m span{font-size:.7rem;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase;font-family:'Space Grotesk';}
+  .cover-ring{width:100%;max-width:420px;justify-self:center;align-self:center;}
   .cover-strip{
-    display:grid;grid-template-columns:repeat(5,1fr);gap:.55rem;margin-top:1.6rem;
+    display:grid;grid-template-columns:repeat(5,1fr);gap:.55rem;
   }
   .cover-strip .c{
     background:var(--panel-2);border:1px solid rgba(255,255,255,.06);border-top:3px solid var(--teal);
-    border-radius:12px;padding:.65rem .8rem;display:flex;flex-direction:column;gap:.15rem;
+    border-radius:12px;padding:.75rem .85rem;display:flex;flex-direction:column;gap:.15rem;
   }
   .cover-strip .c i{font-style:normal;font-family:'Space Grotesk';font-weight:700;color:var(--teal);font-size:.95rem;}
   .cover-strip .c b{font-family:'Space Grotesk';font-weight:600;font-size:.98rem;}
   .cover-strip .c span{color:var(--ink-3);font-size:.74rem;line-height:1.3;}
+
+
 
   /* ---------- Ciclo TRACE overview ---------- */
   .trace-row{display:flex;align-items:stretch;gap:.6rem;margin-top:1.1rem;flex:1;}
@@ -194,7 +204,7 @@
   }
 
   /* ---------- Closing ---------- */
-  .closing{flex:1;display:flex;flex-direction:column;justify-content:flex-start;padding-top:1rem;}
+  .closing{flex:1;display:flex;flex-direction:column;justify-content:flex-start;padding-top:1.2rem;}
   .steps{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem;}
   .steps::before{
     content:"";position:absolute;top:2.35rem;left:8%;right:8%;height:1px;
@@ -248,11 +258,11 @@
   <div class="grid-bg"></div>
   <svg class="nodes" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice">
     <g stroke="rgba(37,131,231,.5)" stroke-width="1" fill="none">
-      <line x1="980" y1="90" x2="1120" y2="180"></line><line x1="120" y1="560" x2="260" y2="620"></line>
+      <line x1="980" y1="90" x2="1120" y2="180"/><line x1="120" y1="560" x2="260" y2="620"/>
     </g>
     <g fill="var(--teal)">
-      <circle cx="980" cy="90" r="4"></circle><circle cx="1120" cy="180" r="5"></circle>
-      <circle cx="120" cy="560" r="4"></circle><circle cx="260" cy="620" r="5"></circle>
+      <circle cx="980" cy="90" r="4"/><circle cx="1120" cy="180" r="5"/>
+      <circle cx="120" cy="560" r="4"/><circle cx="260" cy="620" r="5"/>
     </g>
   </svg>
 
@@ -264,8 +274,8 @@
   </div>
 
   <div class="cover-body">
-    <div>
-      <div class="eyebrow" style="margin-top:1.2rem">Metodología ZirconTech</div>
+    <div class="cover-left">
+      <div class="eyebrow">Metodología ZirconTech</div>
       <h1 class="display">El ciclo <em>TRACE</em></h1>
       <p class="sub">Cómo trabajamos: cada decisión técnica, trazable desde el objetivo de negocio hasta el resultado medido.</p>
       <div class="badge">Anclado en AWS Well-Architected, CAF y FinOps</div>
@@ -279,18 +289,18 @@
     <svg class="cover-ring" viewBox="0 0 400 400" fill="none">
       <defs>
         <linearGradient id="ringg" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#75B9FF"></stop><stop offset="100%" stop-color="#1767BF"></stop>
+          <stop offset="0%" stop-color="#75B9FF"/><stop offset="100%" stop-color="#1767BF"/>
         </linearGradient>
       </defs>
-      <circle cx="200" cy="200" r="150" stroke="rgba(37,131,231,.18)" stroke-width="26"></circle>
-      <circle cx="200" cy="200" r="150" stroke="url(#ringg)" stroke-width="2.5" stroke-dasharray="14 10" opacity=".85"></circle>
-      <circle cx="200" cy="200" r="104" stroke="rgba(37,131,231,.15)" stroke-width="1"></circle>
+      <circle cx="200" cy="200" r="150" stroke="rgba(37,131,231,.18)" stroke-width="26"/>
+      <circle cx="200" cy="200" r="150" stroke="url(#ringg)" stroke-width="2.5" stroke-dasharray="14 10" opacity=".85"/>
+      <circle cx="200" cy="200" r="104" stroke="rgba(37,131,231,.15)" stroke-width="1"/>
       <g font-family="Space Grotesk" font-weight="700" font-size="20" fill="#75B9FF" text-anchor="middle">
-        <g><circle cx="200" cy="50" r="26" fill="#0C2444" stroke="#2583E7" stroke-width="1.5"></circle><text x="200" y="57">T</text></g>
-        <g><circle cx="342" cy="153" r="26" fill="#0C2444" stroke="#2583E7" stroke-width="1.5"></circle><text x="342" y="160">R</text></g>
-        <g><circle cx="288" cy="321" r="26" fill="#0C2444" stroke="#2583E7" stroke-width="1.5"></circle><text x="288" y="328">A</text></g>
-        <g><circle cx="112" cy="321" r="26" fill="#0C2444" stroke="#2583E7" stroke-width="1.5"></circle><text x="112" y="328">C</text></g>
-        <g><circle cx="58" cy="153" r="26" fill="#0C2444" stroke="#2583E7" stroke-width="1.5"></circle><text x="58" y="160">E</text></g>
+        <g><circle cx="200" cy="50" r="26" fill="#0C2444" stroke="#2583E7" stroke-width="1.5"/><text x="200" y="57">T</text></g>
+        <g><circle cx="342" cy="153" r="26" fill="#0C2444" stroke="#2583E7" stroke-width="1.5"/><text x="342" y="160">R</text></g>
+        <g><circle cx="288" cy="321" r="26" fill="#0C2444" stroke="#2583E7" stroke-width="1.5"/><text x="288" y="328">A</text></g>
+        <g><circle cx="112" cy="321" r="26" fill="#0C2444" stroke="#2583E7" stroke-width="1.5"/><text x="112" y="328">C</text></g>
+        <g><circle cx="58" cy="153" r="26" fill="#0C2444" stroke="#2583E7" stroke-width="1.5"/><text x="58" y="160">E</text></g>
       </g>
       <text x="200" y="192" text-anchor="middle" font-family="Space Grotesk" font-size="15" fill="#5B6E88" letter-spacing="3">CICLO</text>
       <text x="200" y="228" text-anchor="middle" font-family="Space Grotesk" font-weight="700" font-size="34" fill="#E8EEF5">TRACE</text>
@@ -325,7 +335,7 @@
       <div class="ej"><b>Ejemplo</b>Agente de WhatsApp para estado de pedidos. KPI: % resuelto sin humano (hoy 0%).</div>
       <div class="gate">Gate: caso de uso con dueño, KPI y valor estimado</div>
     </div>
-    <div class="trace-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+    <div class="trace-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
     <div class="trace-node">
       <div class="letter">R</div>
       <h3>Read</h3>
@@ -336,7 +346,7 @@
       <div class="ej"><b>Ejemplo</b>ERP legado sin API: gap Alto en Platform. Datos a anonimizar (Ley 21.719).</div>
       <div class="gate">Gate: factibilidad confirmada (datos + arquitectura + compliance)</div>
     </div>
-    <div class="trace-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+    <div class="trace-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
     <div class="trace-node">
       <div class="letter">A</div>
       <h3>Architect</h3>
@@ -347,7 +357,7 @@
       <div class="ej"><b>Ejemplo</b>Bedrock + Lambda + DynamoDB. ~USD 800/mes. Criterio de éxito: ≥70%.</div>
       <div class="gate">Gate: costo aprobado, alcance de PoC acordado</div>
     </div>
-    <div class="trace-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+    <div class="trace-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
     <div class="trace-node">
       <div class="letter">C</div>
       <h3>Craft</h3>
@@ -358,7 +368,7 @@
       <div class="ej"><b>Ejemplo</b>3 sprints, 200 conversaciones probadas: 74% resuelto. Decisión: go.</div>
       <div class="gate">Gate: decisión go/no-go documentada</div>
     </div>
-    <div class="trace-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div>
+    <div class="trace-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
     <div class="trace-node">
       <div class="letter">E</div>
       <h3>Evolve</h3>
@@ -371,7 +381,7 @@
     </div>
   </div>
   <div class="trace-loop">
-    <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path><path d="M21 3v5h-5"></path><path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path><path d="M3 21v-5h5"></path></svg>
+    <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
     <p><b>Evolve cierra el círculo</b> contra el objetivo definido en Target: el resultado medido se compara siempre contra la línea base original. Esa trazabilidad es la firma de ZirconTrace.</p>
   </div>
   <div class="footer"><img class="footer-logo" src="zircon-logo.png" alt="ZirconTech"><span class="tag">El ciclo TRACE</span></div>
@@ -397,9 +407,9 @@
       <div class="stage-block activities">
         <div class="label">Qué hacemos</div>
         <ul class="acts">
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Entrevistas con negocio y dueños de proceso.</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Priorización de casos de uso por valor y esfuerzo.</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Definición del KPI y medición de la línea base.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Entrevistas con negocio y dueños de proceso.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Priorización de casos de uso por valor y esfuerzo.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Definición del KPI y medición de la línea base.</li>
         </ul>
       </div>
       <div class="stage-block gate">
@@ -408,7 +418,7 @@
       </div>
     </div>
     <div class="example-card">
-      <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v4M12 16h.01"></path></svg>Ejemplo ilustrativo (ficticio) · Andina Retail</div>
+      <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Ejemplo ilustrativo (ficticio) · Andina Retail</div>
       <div class="example-rows">
         <div class="row"><dt>Problema</dt><dd>El equipo de atención al cliente recibe <b>40% más consultas</b> por WhatsApp que el año pasado; tiempo de respuesta promedio de 6 horas.</dd></div>
         <div class="row"><dt>Caso de uso</dt><dd>Agente de atención por WhatsApp para consultas de estado de pedido y devoluciones.</dd></div>
@@ -442,9 +452,9 @@
       <div class="stage-block activities">
         <div class="label">Qué hacemos</div>
         <ul class="acts">
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Inventario de fuentes de datos y calidad.</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Assessment CAF + Well-Architected Review.</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Mapa de riesgos regulatorios y de seguridad.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Inventario de fuentes de datos y calidad.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Assessment CAF + Well-Architected Review.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Mapa de riesgos regulatorios y de seguridad.</li>
         </ul>
       </div>
       <div class="stage-block gate">
@@ -453,7 +463,7 @@
       </div>
     </div>
     <div class="example-card">
-      <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v4M12 16h.01"></path></svg>Ejemplo ilustrativo (ficticio) · Andina Retail</div>
+      <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Ejemplo ilustrativo (ficticio) · Andina Retail</div>
       <div class="example-rows">
         <div class="row"><dt>Hallazgo técnico</dt><dd>Los datos de pedidos viven en un ERP legado sin API — gap <b>Alto</b> en la perspectiva Platform del CAF.</dd></div>
         <div class="row"><dt>Datos</dt><dd>18 meses de conversaciones históricas disponibles, suficientes para evaluar el agente.</dd></div>
@@ -486,9 +496,9 @@
       <div class="stage-block activities">
         <div class="label">Qué hacemos</div>
         <ul class="acts">
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Diseño de arquitectura objetivo sobre AWS.</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Estimación FinOps de costos por fase.</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Definición de los criterios de éxito del PoC.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Diseño de arquitectura objetivo sobre AWS.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Estimación FinOps de costos por fase.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Definición de los criterios de éxito del PoC.</li>
         </ul>
       </div>
       <div class="stage-block gate">
@@ -497,7 +507,7 @@
       </div>
     </div>
     <div class="example-card">
-      <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v4M12 16h.01"></path></svg>Ejemplo ilustrativo (ficticio) · Andina Retail</div>
+      <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Ejemplo ilustrativo (ficticio) · Andina Retail</div>
       <div class="example-rows">
         <div class="row"><dt>Arquitectura</dt><dd>Amazon Bedrock (Claude) + Lambda + DynamoDB, integrado con la WhatsApp Business API.</dd></div>
         <div class="row"><dt>Acceso a datos</dt><dd>Capa de integración sobre el ERP legado para exponer estado de pedido como API interna.</dd></div>
@@ -530,9 +540,9 @@
       <div class="stage-block activities">
         <div class="label">Qué hacemos</div>
         <ul class="acts">
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Sprints cortos con demo al cierre de cada uno.</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Evaluación del agente contra datos reales.</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Registro de resultado por criterio de éxito.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Sprints cortos con demo al cierre de cada uno.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Evaluación del agente contra datos reales.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Registro de resultado por criterio de éxito.</li>
         </ul>
       </div>
       <div class="stage-block gate">
@@ -541,7 +551,7 @@
       </div>
     </div>
     <div class="example-card">
-      <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v4M12 16h.01"></path></svg>Ejemplo ilustrativo (ficticio) · Andina Retail</div>
+      <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Ejemplo ilustrativo (ficticio) · Andina Retail</div>
       <div class="example-rows">
         <div class="row"><dt>Construcción</dt><dd>3 sprints. PoC probado contra 200 conversaciones históricas y validado en vivo con 20 clientes reales.</dd></div>
         <div class="row"><dt>Resultado</dt><dd><b>74%</b> de consultas resueltas sin intervención humana — supera el criterio de éxito (70%).</dd></div>
@@ -574,9 +584,9 @@
       <div class="stage-block activities">
         <div class="label">Qué hacemos</div>
         <ul class="acts">
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Puesta en producción y observabilidad del KPI.</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Revisión FinOps del costo real vs. estimado.</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Apertura del próximo ciclo con un nuevo Target.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Puesta en producción y observabilidad del KPI.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Revisión FinOps del costo real vs. estimado.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Apertura del próximo ciclo con un nuevo Target.</li>
         </ul>
       </div>
       <div class="stage-block gate">
@@ -585,7 +595,7 @@
       </div>
     </div>
     <div class="example-card">
-      <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v4M12 16h.01"></path></svg>Ejemplo ilustrativo (ficticio) · Andina Retail</div>
+      <div class="example-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Ejemplo ilustrativo (ficticio) · Andina Retail</div>
       <div class="example-rows">
         <div class="row"><dt>2 meses live</dt><dd>KPI medido: <b>71%</b> de consultas resueltas sin intervención (línea base 0%).</dd></div>
         <div class="row"><dt>Delta</dt><dd><b>+71 puntos</b> vs. línea base — algo por debajo del pico del PoC (74%), explicado por la mayor variedad de consultas reales.</dd></div>
@@ -638,12 +648,12 @@
 
 </div><!-- /deck -->
 
-<div class="hint hide" id="hint">← → para navegar · F pantalla completa · P para PDF</div>
-<div class="counter"><b id="cur">01</b> / <span id="total">08</span></div>
+<div class="hint" id="hint">← → para navegar · F pantalla completa · P para PDF</div>
+<div class="counter"><b id="cur">01</b> / <span id="total">??</span></div>
 <div class="dots" id="dots"></div>
 <div class="nav">
-  <button id="prev" aria-label="Anterior"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></button>
-  <button id="next" aria-label="Siguiente"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg></button>
+  <button id="prev" aria-label="Anterior"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <button id="next" aria-label="Siguiente"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
 </div>
 
 <script>
@@ -671,6 +681,5 @@
   document.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});
   document.addEventListener('touchend',e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50){dx<0?next():prev();}x0=null;},{passive:true});
 </script>
-
-
-</body></html>
+</body>
+</html>
