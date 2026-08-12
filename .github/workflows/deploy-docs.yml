@@ -38,7 +38,7 @@ jobs:
         working-directory: site-interno
       - run: |
           mkdir -p _site/presentation
-          cp presentation/*.html presentation/*.png presentation/*.webp _site/presentation/
+          cp presentation/*.html presentation/*.png presentation/*.webp presentation/*.jpg _site/presentation/
       - run: |
           printf 'User-agent: *\nDisallow: /interno/\n' > _site/robots.txt
       - uses: actions/upload-pages-artifact@v3
