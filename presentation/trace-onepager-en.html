@@ -39,15 +39,20 @@
   h1,h2,h3,.display{font-family:'Space Grotesk','Inter',sans-serif;letter-spacing:-.01em;}
 
   .grid-bg{
-    position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.4;
+    position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
     background-image:linear-gradient(rgba(37,131,231,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(37,131,231,.06) 1px,transparent 1px);
     background-size:64px 64px;
-    -webkit-mask-image:radial-gradient(120% 70% at 85% 0%,#000 10%,transparent 68%);
-    mask-image:radial-gradient(120% 70% at 85% 0%,#000 10%,transparent 68%);
+    -webkit-mask-image:radial-gradient(120% 85% at 50% 0%,#000 0%,transparent 78%);
+    mask-image:radial-gradient(120% 85% at 50% 0%,#000 0%,transparent 78%);
   }
   .nodes{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.4;}
 
-  .page{max-width:1040px;margin:0 auto;padding:3.6vh 6vw 4vh;position:relative;z-index:1;}
+  .page{max-width:1160px;margin:0 auto;padding:3.6vh 5.5vw 4vh;position:relative;z-index:1;}
+  .page::before{
+    content:"";position:absolute;inset:0;z-index:-1;
+    border-left:1px solid rgba(37,131,231,.10);border-right:1px solid rgba(37,131,231,.10);
+    background:linear-gradient(90deg,rgba(37,131,231,.05),transparent 12%,transparent 88%,rgba(37,131,231,.05));
+  }
 
   .top{
     display:flex;align-items:center;justify-content:space-between;gap:1.5rem;
@@ -143,6 +148,9 @@
     .step .num{width:34px;height:34px;font-size:.9rem;border-radius:10px;}
     .timeline::before{left:16px;}
     .metrics{grid-template-columns:1fr 1fr;max-width:none;}
+    .card .row{grid-template-columns:1fr;gap:.45rem;}
+    .top{gap:.9rem;}
+    .page::before{border:none;background:none;}
   }
 
   @media print{
@@ -183,13 +191,17 @@
 <body>
 <div class="grid-bg"></div>
 <svg class="nodes" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice">
-  <g stroke="rgba(37,131,231,.5)" stroke-width="1" fill="none">
+  <g stroke="rgba(37,131,231,.42)" stroke-width="1" fill="none">
+    <line x1="160" y1="90" x2="300" y2="190"/><line x1="300" y1="190" x2="220" y2="330"/>
     <line x1="980" y1="90" x2="1120" y2="190"/><line x1="1120" y1="190" x2="1040" y2="330"/>
-    <line x1="120" y1="560" x2="260" y2="620"/>
+    <line x1="140" y1="560" x2="280" y2="620"/>
+    <line x1="1000" y1="560" x2="1140" y2="620"/>
   </g>
   <g fill="#2583E7">
+    <circle cx="160" cy="90" r="4"/><circle cx="300" cy="190" r="5"/><circle cx="220" cy="330" r="4"/>
     <circle cx="980" cy="90" r="4"/><circle cx="1120" cy="190" r="5"/><circle cx="1040" cy="330" r="4"/>
-    <circle cx="120" cy="560" r="4"/><circle cx="260" cy="620" r="5"/>
+    <circle cx="140" cy="560" r="4"/><circle cx="280" cy="620" r="5"/>
+    <circle cx="1000" cy="560" r="4"/><circle cx="1140" cy="620" r="5"/>
   </g>
 </svg>
 
